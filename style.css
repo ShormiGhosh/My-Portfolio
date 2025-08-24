@@ -1,8 +1,35 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #011b2f;
-  color: #ffffff;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+:root {
+  --color: #667dff;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --accent: #00aeac;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+[data-theme="light"] {
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 footer {
   text-align: center;
@@ -41,3 +68,83 @@ footer {
   height: 100%;
   background: linear-gradient(90deg, #f39c12, #e74c3c);
 }
+
+nav{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100vw;
+  padding: 1.5rem 2rem;
+  background: rgba(10,10,10,0.5);
+  backdrop-filter: blur(20px);
+  transition: background-color 0.3s ease;
+}
+[data-theme="light"] nav {
+  background: rgba(255, 255, 255, 0.5);
+}
+.theme-toggle {
+  margin-left: 20px;
+  height: 30px;
+  width: 60px;
+  position: relative;
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-sizing: 0 0 10px rgba(0, 255, 229, 0.7);
+}
+.nav-container{
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.left{
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Playfair Display", serif;
+  color: var(--accent);
+}
+.nav-list{
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.3s ease;
+}
+.nav-list a {
+  text-decoration: none;
+  position: relative;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+.nav-list a:hover {
+  color: var(--accent);
+}
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  bottom: -5px;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.nav-list a:hover::after {
+  width: 100%;
+} 
