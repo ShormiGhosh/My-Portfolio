@@ -49,7 +49,6 @@ function initializeLoader() {
 }
 window.addEventListener("load", initializeLoader);
 function initializeAnime() {
-  // First animate navigation - make it more visible
   gsap.to("nav", {
     y: 0,
     duration: 1,
@@ -58,6 +57,8 @@ function initializeAnime() {
       // Start home content animations after nav completes
       console.log("Nav animation complete, starting home animations");
       startHomeAnimations();
+      // Initialize scroll-triggered animations after home animations start
+      initializeScrollAnimations();
     }
   });
 }
@@ -76,7 +77,6 @@ function startHomeAnimations() {
     y: 0,
     ease: "power3.out",
     onComplete: () => {
-      // Step 2: After greeting completes, start the rest
       startRestOfAnimations();
     }
   });
@@ -170,5 +170,95 @@ function typeWriter() {
   setTimeout(typeWriter, typeSpeed);
 }
 document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(typeWriter, 4000); // Start after 1 second
+  setTimeout(typeWriter, 4000); // Start after 4 seconds
 });
+
+// Initialize scroll-triggered animations for contact section
+function initializeScrollAnimations() {
+  console.log("Initializing scroll animations");
+  
+  // Contact Section Animation
+  if (document.querySelector("#contact-section")) {
+    // Animate contact section title
+    gsap.to("#contact-section h1", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#contact-section",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate contact background container
+    gsap.to(".contact-bg", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".contact-bg",
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate contact info (left side)
+    gsap.to(".contact-info", {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      delay: 0.2,
+      scrollTrigger: {
+        trigger: ".contact-info",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate contact form (right side)
+    gsap.to(".contact-form", {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      delay: 0.4,
+      scrollTrigger: {
+        trigger: ".contact-form",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate contact info items one by one
+    gsap.to(".contact-info li", {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: ".contact-info ul",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate form elements
+    gsap.to(".contact-form label, .contact-form input, .contact-form textarea, .contact-form button", {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: ".contact-form form",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  }
+}
