@@ -262,3 +262,55 @@ function initializeScrollAnimations() {
     });
   }
 }
+
+//mobile menu
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.querySelector(".mobile-menu");
+const menuIcon = menuToggle.querySelector("span");
+const mobileMenuLinks = document.querySelectorAll(".mobile-menu a");
+
+menuToggle.addEventListener("click", () => {
+  mobileMenu.classList.toggle("active");
+  menuToggle.classList.toggle("active");
+  
+  // Change icon from menu to close
+  if(mobileMenu.classList.contains("active")) {
+    menuIcon.textContent = "close";
+    document.body.style.overflow = "hidden";
+    gsap.to(mobileMenuLinks, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      delay: 0.1,
+      ease: "power2.out"
+    });
+  } else {
+    menuIcon.textContent = "menu";
+    document.body.style.overflow = "auto";
+    
+    // Reset menu links
+    gsap.set(mobileMenuLinks, {
+      opacity: 0,
+      y: 20
+    });
+  }
+});
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove("active");
+  menuToggle.classList.remove("active");
+  menuIcon.textContent = "menu";
+  document.body.style.overflow = "";
+  gsap.set(mobileMenuLinks, {
+    opacity: 0,
+    y: 20
+  });
+}
+mobileMenuLinks.forEach(link => {
+  link.addEventListener("click", (e) => {
+    setTimeout(() => {
+      closeMobileMenu();
+    }, 200);
+  });
+});
