@@ -138,6 +138,7 @@ themeToggle.addEventListener("click", () => {
 // Typewriter effect
 const typewriterElement = document.querySelector(".typing-demo");
 const words = [
+  "Student",
   "Programmer",
   "Flutter Developer",
   "Web Developer",
@@ -257,6 +258,80 @@ function initializeScrollAnimations() {
       scrollTrigger: {
         trigger: ".contact-form form",
         start: "top 80%",
+      }
+    });
+  }
+  
+  // Skills Section Animation
+  if (document.querySelector("#skills")) {
+    // Animate skills section title
+    gsap.to("#skills h1", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#skills",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate main skills container
+    gsap.to(".soft-technical", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".soft-technical",
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate each skill category box
+    gsap.to(".programing-lang, .frame-lib, .tool-technology, .soft", {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: ".soft-technical",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate skill category titles
+    gsap.to(".programing-lang h2, .frame-lib h2, .tool-technology h2, .soft h2", {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      stagger: 0.15,
+      delay: 0.3,
+      scrollTrigger: {
+        trigger: ".soft-technical",
+        start: "top 75%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate individual skill buttons with stagger
+    gsap.to(".programing-lang li, .frame-lib li, .tool-technology li, .soft li", {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.4,
+      ease: "power2.out",
+      stagger: 0.05,
+      delay: 0.6,
+      scrollTrigger: {
+        trigger: ".soft-technical",
+        start: "top 70%",
         toggleActions: "play none none reverse"
       }
     });
