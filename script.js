@@ -389,3 +389,85 @@ mobileMenuLinks.forEach(link => {
     }, 200);
   });
 });
+
+// about me tabs
+const tabLinks = document.getElementsByClassName("tablink");
+const tabContents = document.getElementsByClassName("tabcontent");
+
+function toggleTab(tabName) {
+  // Remove active classes from all tab links
+  for (let i = 0; i < tabLinks.length; i++) {
+    tabLinks[i].classList.remove("active-link");
+  }
+  
+  // Remove active classes from all tab contents
+  for (let i = 0; i < tabContents.length; i++) {
+    tabContents[i].classList.remove("active-content");
+  }
+  
+  // Add active class to clicked tab link
+  event.currentTarget.classList.add("active-link");
+  
+  // Add active class to corresponding tab content
+  document.getElementById(tabName).classList.add("active-content");
+}
+
+// Dynamic Work Experience Functions
+function loadWorkExperiences(experiences = []) {
+  const experienceList = document.getElementById('experienceList');
+  const noExperience = document.getElementById('noExperience');
+  
+  if (experiences.length === 0) {
+    // Show no experience message
+    experienceList.classList.add('hidden');
+    noExperience.classList.remove('hidden');
+  } else {
+    // Show experience list and hide no experience message
+    noExperience.classList.add('hidden');
+    experienceList.classList.remove('hidden');
+    
+    // Clear existing content
+    experienceList.innerHTML = '';
+    
+    // Add each experience
+    experiences.forEach(exp => {
+      const experienceItem = createExperienceItem(exp);
+      experienceList.appendChild(experienceItem);
+    });
+  }
+}
+
+function createExperienceItem(experience) {
+  const item = document.createElement('div');
+  item.className = 'experience-item';
+  
+  item.innerHTML = `
+    <div class="company">${experience.company}</div>
+    <div class="position">${experience.position}</div>
+    <div class="duration">${experience.duration}</div>
+    <div class="description">
+      ${experience.description}
+      ${experience.achievements ? `<ul>${experience.achievements.map(achievement => `<li>${achievement}</li>`).join('')}</ul>` : ''}
+    </div>
+  `;
+  
+  return item;
+}
+
+// Example usage - call this function when data is loaded from database
+// loadWorkExperiences([
+//   {
+//     company: "Tech Company Inc.",
+//     position: "Frontend Developer",
+//     duration: "Jan 2024 - Present",
+//     description: "Developed responsive web applications using React and JavaScript.",
+//     achievements: [
+//       "Improved website performance by 40%",
+//       "Led a team of 3 developers",
+//       "Implemented modern design patterns"
+//     ]
+//   }
+// ]);
+
+// Initialize with empty experiences (shows no experience message)
+loadWorkExperiences();
