@@ -336,6 +336,190 @@ function initializeScrollAnimations() {
       }
     });
   }
+  
+  // About Section Animation
+  if (document.querySelector("#about")) {
+    // Animate about section title
+    gsap.to("#about h1", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate about container
+    gsap.to(".about-container", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".about-container",
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate about columns
+    gsap.to(".about-col1", {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".row",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    gsap.to(".about-col2", {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      delay: 0.2,
+      scrollTrigger: {
+        trigger: ".row",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate about elements
+    gsap.to(".subtitle", {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      delay: 0.4,
+      scrollTrigger: {
+        trigger: ".about-col2",
+        start: "top 75%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    gsap.to(".para", {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      delay: 0.6,
+      scrollTrigger: {
+        trigger: ".about-col2",
+        start: "top 75%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    gsap.to(".tab-titles", {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      delay: 0.8,
+      scrollTrigger: {
+        trigger: ".about-col2",
+        start: "top 75%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  }
+  
+  // Achievements Section Animation
+  if (document.querySelector("#achievements")) {
+    // Animate achievements section title
+    gsap.to("#achievements h1", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#achievements",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate achievements container
+    gsap.to(".achievements-container", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".achievements-container",
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate each achievement item
+    gsap.to(".achievement-item", {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: 0.3,
+      scrollTrigger: {
+        trigger: ".achievements-container",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate achievement images
+    gsap.to(".achievement-image", {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      duration: 0.6,
+      ease: "power2.out",
+      stagger: 0.2,
+      delay: 0.3,
+      scrollTrigger: {
+        trigger: ".achievements-container",
+        start: "top 75%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate achievement content
+    gsap.to(".achievement-title", {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.2,
+      delay: 0.5,
+      scrollTrigger: {
+        trigger: ".achievements-container",
+        start: "top 70%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    gsap.to(".achievement-description", {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.2,
+      delay: 0.7,
+      scrollTrigger: {
+        trigger: ".achievements-container",
+        start: "top 70%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  }
 }
 
 //mobile menu

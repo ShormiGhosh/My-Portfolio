@@ -1045,6 +1045,43 @@ nav {
   .no-experience span {
     font-size: 0.9rem;
   }
+
+  /* Achievements section mobile responsive */
+  #achievements {
+    padding: 3rem 1rem;
+  }
+
+  #achievements h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .achievements-container {
+    gap: 2rem;
+  }
+
+  .achievement-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .achievement-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  .achievement-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .achievement-description {
+    font-size: 0.95rem;
+    text-align: center;
+  }
 }
 
 /* About section */
@@ -1059,6 +1096,8 @@ nav {
 }
 .about-col1 {
   flex-basis: 30%;
+  opacity: 0;
+  transform: translateX(-50px);
 }
 .about-col1 img {
   border-radius: 20px;
@@ -1068,21 +1107,29 @@ nav {
 }
 .about-col2 {
   flex-basis: 60%;
+  opacity: 0;
+  transform: translateX(50px);
 }
 .subtitle {
   color: var(--accent);
   font-weight: 600;
   font-size: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
 }
 .tab-titles {
   margin: 20px 0 40px;
   display: flex;
   gap: 20px;
+  opacity: 0;
+  transform: translateY(30px);
 }
 .para {
   color: var(--text-secondary);
   margin-bottom: 20px;
   line-height: 1.6;
+  opacity: 0;
+  transform: translateY(30px);
 }
 .tablink {
   margin-right: 50px;
@@ -1117,6 +1164,96 @@ font-size: 14px;
 }
 .tabcontent.active-content{
   display: block;
+}
+
+/* Achievements Section */
+#achievements {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+#achievements h1 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: var(--accent);
+  text-shadow: linear-gradient(--accent, --shadow 10%);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.achievements-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+}
+
+.achievement-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-image {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  opacity: 0;
+  transform: translateX(-30px) scale(0.8);
+}
+
+.achievement-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.achievement-image img:hover {
+  transform: scale(1.1);
+}
+
+.achievement-content {
+  flex: 1;
+}
+
+.achievement-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.achievement-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 /* Work Experience Container */
