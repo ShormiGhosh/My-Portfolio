@@ -339,19 +339,6 @@ function initializeScrollAnimations() {
   
   // About Section Animation
   if (document.querySelector("#about")) {
-    // Animate about section title
-    gsap.to("#about h1", {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 80%",
-        toggleActions: "play none none reverse"
-      }
-    });
-    
     // Animate about container
     gsap.to(".about-container", {
       opacity: 1,
@@ -520,6 +507,63 @@ function initializeScrollAnimations() {
       }
     });
   }
+  
+  // Projects Section Animation
+  if (document.querySelector("#projects")) {
+    // Animate projects section title
+    gsap.to("#projects h1", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate projects container
+    gsap.to(".projects-container", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".projects-container",
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate project list
+    gsap.to(".project-list", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".project-list",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+    
+    // Animate each project item with stagger
+    gsap.to(".project-item", {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: ".project-list",
+        start: "top 75%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  }
 }
 
 //mobile menu
@@ -655,3 +699,62 @@ function createExperienceItem(experience) {
 
 // Initialize with empty experiences (shows no experience message)
 loadWorkExperiences();
+
+// Mobile Project Layer Touch Functionality
+function initializeMobileProjectInteractions() {
+  const projectItems = document.querySelectorAll('.project-item');
+  
+  projectItems.forEach(item => {
+    let isLayerVisible = false;
+    
+    // Add click event for mobile devices
+    item.addEventListener('click', function(e) {
+      // Check if it's a touch device
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        e.preventDefault();
+        
+        const layer = item.querySelector('.layer');
+        
+        if (!isLayerVisible) {
+          // Show layer
+          layer.style.height = '100%';
+          layer.style.opacity = '1';
+          layer.querySelector('p').style.display = 'block';
+          isLayerVisible = true;
+          
+          // Add visual feedback
+          item.style.transform = 'scale(0.98)';
+          setTimeout(() => {
+            item.style.transform = 'scale(1)';
+          }, 150);
+        } else {
+          // If clicking on the GitHub link, allow it to work
+          if (e.target.closest('a')) {
+            return; // Let the link work normally
+          }
+          
+          // Hide layer
+          layer.style.height = '30%';
+          layer.querySelector('p').style.display = 'none';
+          isLayerVisible = false;
+        }
+      }
+    });
+    
+    // Reset layer when clicking outside (for mobile)
+    document.addEventListener('click', function(e) {
+      if (!item.contains(e.target) && isLayerVisible) {
+        const layer = item.querySelector('.layer');
+        layer.style.height = '30%';
+        layer.querySelector('p').style.display = 'none';
+        isLayerVisible = false;
+      }
+    });
+  });
+}
+
+// Initialize mobile interactions when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Small delay to ensure all elements are rendered
+  setTimeout(initializeMobileProjectInteractions, 500);
+});
