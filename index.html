@@ -350,7 +350,7 @@ Best All-Girls Team in Intra KUET Programming Contest 2023</h3>
             </ul>
           </div>
           <div class="contact-form">
-            <form>
+            <form action=https://formspree.io/f/xyzdlrld method="POST" id="contact-form">
               <div class="form-row">
                 <span
                   ><label for="name">Name:</label>
@@ -372,7 +372,12 @@ Best All-Girls Team in Intra KUET Programming Contest 2023</h3>
                 rows="4"
                 required
               ></textarea>
-              <button type="submit">Send Message</button>
+              <!-- Hidden field to specify your email -->
+              <input type="hidden" name="_replyto" value="shormighosh111@gmail.com">
+              <!-- Subject prefix for better email organization -->
+              <input type="hidden" name="_subject" value="Portfolio Contact Form Submission">
+              <button type="submit" id="submit-btn">Send Message</button>
+              <div id="form-status" style="margin-top: 1rem; text-align: center;"></div>
             </form>
           </div>
         </div>

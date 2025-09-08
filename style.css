@@ -488,7 +488,7 @@ nav {
     flex-direction: column;
     gap: 1.5rem;
   }
-  
+
   /* Projects Section Mobile */
   #projects {
     padding: 3rem 1rem;
@@ -548,7 +548,6 @@ nav {
   .project-item:focus-within .layer p {
     display: block;
   }
-
 }
 .social-icons {
   display: flex;
@@ -1539,41 +1538,40 @@ nav {
   transition: height 0.3s ease, opacity 0.3s ease;
 }
 
-/* Touch device specific styles */
 @media (hover: none) and (pointer: coarse) {
-  /* For touch devices, disable hover effects and make layers more accessible */
   .project-item:hover {
     transform: none;
   }
-  
+
   .project-item:hover img {
     transform: none;
   }
-  
+
   .project-item:hover .layer {
-    height: 0; /* Disable hover effect on touch devices */
+    height: 0;
   }
-  
-  /* Show partial layer by default on touch devices */
+
   .layer {
     height: 60% !important;
     opacity: 0.95 !important;
     padding: 1.5rem;
     transition: height 0.3s ease, opacity 0.3s ease;
   }
-  
-  /* Hide description initially on touch devices */
   .layer p {
     display: block !important;
   }
 }
 
-/* Initial hidden states for GSAP animations */
-/* About section elements - excluding main title to prevent blinking */
-.about-container, .about-col1, .about-col2, .subtitle, .para, .tab-titles {
+.about-container,
+.about-col1,
+.about-col2,
+.subtitle,
+.para,
+.tab-titles {
   opacity: 0;
   transform: translateY(30px);
 }
-.about-col1, .about-col2 {
+.about-col1,
+.about-col2 {
   transform: translateX(-30px);
 }

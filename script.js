@@ -752,9 +752,62 @@ function initializeMobileProjectInteractions() {
     });
   });
 }
-
-// Initialize mobile interactions when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   // Small delay to ensure all elements are rendered
   setTimeout(initializeMobileProjectInteractions, 500);
+  
+  // Initialize contact form
+  initializeContactForm();
 });
+
+// Contact Form Handler
+function initializeContactForm() {
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const formStatus = document.getElementById('form-status');
+  
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Change button text and disable it
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      // Get form data
+      const formData = new FormData(form);
+      
+      // Send to Formspree
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          formStatus.innerHTML = '<p style="color: var(--accent); font-weight: bold;">Message sent successfully! I\'ll get back to you soon.</p>';
+          form.reset();
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        formStatus.innerHTML = '<p style="color: #ff6b6b; font-weight: bold;">Sorry, there was an error sending your message. Please try again.</p>';
+      })
+      .finally(() => {
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+        // Clear status message after 5 seconds
+        setTimeout(() => {
+          formStatus.innerHTML = '';
+        }, 5000);
+      });
+    });
+  }
+}
