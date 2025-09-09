@@ -1566,8 +1566,7 @@ nav {
 .about-col1,
 .about-col2,
 .subtitle,
-.para,
-.tab-titles {
+.para {
   opacity: 0;
   transform: translateY(30px);
 }

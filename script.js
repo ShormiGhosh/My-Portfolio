@@ -141,7 +141,6 @@ const words = [
   "Student",
   "Programmer",
   "Flutter Developer",
-  "Web Developer",
   "Photographer",
 ];
 let wordIndex = 0;
@@ -682,20 +681,6 @@ function createExperienceItem(experience) {
   return item;
 }
 
-// Example usage - call this function when data is loaded from database
-// loadWorkExperiences([
-//   {
-//     company: "Tech Company Inc.",
-//     position: "Frontend Developer",
-//     duration: "Jan 2024 - Present",
-//     description: "Developed responsive web applications using React and JavaScript.",
-//     achievements: [
-//       "Improved website performance by 40%",
-//       "Led a team of 3 developers",
-//       "Implemented modern design patterns"
-//     ]
-//   }
-// ]);
 
 // Initialize with empty experiences (shows no experience message)
 loadWorkExperiences();
