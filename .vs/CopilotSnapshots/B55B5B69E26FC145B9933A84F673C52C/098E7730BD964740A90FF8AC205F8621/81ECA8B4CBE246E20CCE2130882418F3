@@ -1,0 +1,536 @@
+﻿using System;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+
+namespace shormiportfolio.Admin
+{
+    public partial class Login : System.Web.UI.Page
+    {
+        private string connectionString = ConfigurationManager.ConnectionStrings["PortfolioConnectionString"].ConnectionString;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // Initialize session tracking
+                InitializeSessionTracking();
+                
+                // Check for saved username in cookies
+                LoadSavedUsername();
+                
+                // Check if user has a remember me cookie and is already authenticated
+                CheckRememberMeCookie();
+                
+                // Check if user is already authenticated via session
+                if (User.Identity.IsAuthenticated)
+                {
+                    Response.Redirect("Dashboard.aspx");
+                }
+            }
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                ShowError("Please enter both username and password.");
+                return;
+            }
+
+            // Try database validation first
+            bool isValidUser = ValidateUser(username, password);
+            
+            // Fallback authentication for testing (remove in production)
+            if (!isValidUser)
+            {
+                // Check against web.config values as fallback
+                string configUsername = ConfigurationManager.AppSettings["AdminUsername"];
+                string configPassword = ConfigurationManager.AppSettings["AdminPassword"];
+                
+                if (username.Equals(configUsername, StringComparison.OrdinalIgnoreCase) && 
+                    password.Equals(configPassword, StringComparison.Ordinal))
+                {
+                    isValidUser = true;
+                    ShowError("⚠️ Logged in using fallback authentication. Database login failed, but web.config values worked. Check your database setup.");
+                }
+            }
+
+            if (isValidUser)
+            {
+                // Create comprehensive session data
+                CreateUserSession(username);
+                
+                // Handle Remember Me functionality
+                if (chkRememberMe.Checked)
+                {
+                    CreateRememberMeCookie(username);
+                    SaveUsernamePreference(username);
+                    // Set persistent authentication cookie for 7 days
+                    FormsAuthentication.SetAuthCookie(username, true);
+                    
+                    // Set custom expiration for the forms auth cookie
+                    HttpCookie authCookie = Response.Cookies[FormsAuthentication.FormsCookieName];
+                    if (authCookie != null)
+                    {
+                        authCookie.Expires = DateTime.Now.AddDays(7);
+                    }
+                }
+                else
+                {
+                    // Set session-only authentication cookie
+                    FormsAuthentication.SetAuthCookie(username, false);
+                    
+                    // Clear any existing remember me cookie
+                    ClearRememberMeCookie();
+                    ClearUsernamePreference();
+                }
+                
+                // Create user preference cookies
+                CreateUserPreferenceCookies();
+                
+                // Log successful login
+                LogLoginActivity(username, true);
+                
+                // Redirect to admin dashboard
+                string returnUrl = Request.QueryString["ReturnUrl"];
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    Response.Redirect(returnUrl);
+                }
+                else
+                {
+                    Response.Redirect("Dashboard.aspx");
+                }
+            }
+            else
+            {
+                ShowError("❌ Invalid credentials. Please check: 1) Database is created 2) Admin user exists 3) Credentials are correct (admin/admin123)");
+                // Log failed login attempt
+                LogLoginActivity(username, false);
+                // Clear any existing remember me cookie on failed login
+                ClearRememberMeCookie();
+            }
+        }
+
+        #region Session Management
+        
+        private void InitializeSessionTracking()
+        {
+            // Set session start time
+            if (Session["SessionStartTime"] == null)
+            {
+                Session["SessionStartTime"] = DateTime.Now;
+            }
+            
+            // Track page visits
+            Session["LoginPageVisits"] = (Session["LoginPageVisits"] as int? ?? 0) + 1;
+            
+            // Store user's IP address and browser info for security
+            Session["UserIPAddress"] = Request.UserHostAddress;
+            Session["UserAgent"] = Request.UserAgent;
+        }
+        
+        private void CreateUserSession(string username)
+        {
+            // Basic session information
+            Session["AdminUsername"] = username;
+            Session["LoginTime"] = DateTime.Now;
+            Session["IsAuthenticated"] = true;
+            Session["SessionID"] = Session.SessionID;
+            
+            // User activity tracking
+            Session["LastActivity"] = DateTime.Now;
+            Session["LoginCount"] = (Session["LoginCount"] as int? ?? 0) + 1;
+            
+            // User preferences
+            Session["Theme"] = "Dark"; // Default theme
+            Session["Language"] = "en-US"; // Default language
+            
+            // Security information
+            Session["LoginIP"] = Request.UserHostAddress;
+            Session["LoginBrowser"] = Request.Browser.Browser;
+            Session["LoginPlatform"] = Request.Browser.Platform;
+            
+            // Admin permissions (can be expanded)
+            Session["AdminLevel"] = "Full"; // Full, Limited, ReadOnly
+            Session["CanModifyUsers"] = true;
+            Session["CanModifyContent"] = true;
+        }
+        
+        #endregion
+
+        #region Cookie Management
+        
+        private void CreateUserPreferenceCookies()
+        {
+            // User theme preference cookie (30 days)
+            CreateCookie("AdminTheme", "Dark", 30);
+            
+            // User language preference cookie (30 days)
+            CreateCookie("AdminLanguage", "en-US", 30);
+            
+            // Last login timestamp cookie (30 days)
+            CreateCookie("LastLoginTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), 30);
+            
+            // Login count cookie (30 days)
+            string loginCountStr = GetCookieValue("LoginCount", "0");
+            int loginCount;
+            if (!int.TryParse(loginCountStr, out loginCount))
+            {
+                loginCount = 0;
+            }
+            CreateCookie("LoginCount", (loginCount + 1).ToString(), 30);
+        }
+        
+        private void SaveUsernamePreference(string username)
+        {
+            // Save username for convenience (not password!) - 30 days
+            CreateCookie("SavedUsername", username, 30);
+        }
+        
+        private void LoadSavedUsername()
+        {
+            // Load saved username if exists
+            string savedUsername = GetCookieValue("SavedUsername");
+            if (!string.IsNullOrEmpty(savedUsername))
+            {
+                txtUsername.Text = savedUsername;
+                // Auto-focus on password field if username is pre-filled
+                txtPassword.Focus();
+            }
+        }
+        
+        private void ClearUsernamePreference()
+        {
+            ClearCookie("SavedUsername");
+        }
+        
+        private void CreateCookie(string name, string value, int daysToExpire)
+        {
+            try
+            {
+                HttpCookie cookie = new HttpCookie(name, value);
+                cookie.Expires = DateTime.Now.AddDays(daysToExpire);
+                cookie.HttpOnly = true; // Security: prevent XSS
+                cookie.Secure = Request.IsSecureConnection; // Security: HTTPS only if available
+                cookie.Path = "/";
+                Response.Cookies.Add(cookie);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error creating cookie {name}: {ex.Message}");
+            }
+        }
+        
+        private string GetCookieValue(string cookieName, string defaultValue = "")
+        {
+            try
+            {
+                HttpCookie cookie = Request.Cookies[cookieName];
+                return cookie?.Value ?? defaultValue;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error reading cookie {cookieName}: {ex.Message}");
+                return defaultValue;
+            }
+        }
+        
+        private void ClearCookie(string cookieName)
+        {
+            try
+            {
+                HttpCookie cookie = new HttpCookie(cookieName);
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                cookie.Value = "";
+                cookie.Path = "/";
+                Response.Cookies.Add(cookie);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error clearing cookie {cookieName}: {ex.Message}");
+            }
+        }
+        
+        #endregion
+
+        #region Authentication & Validation
+
+        private bool ValidateUser(string username, string password)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    
+                    // First, check if AdminUsers table exists and has data
+                    string checkTableQuery = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'AdminUsers'";
+                    using (SqlCommand checkCmd = new SqlCommand(checkTableQuery, conn))
+                    {
+                        int tableExists = (int)checkCmd.ExecuteScalar();
+                        if (tableExists == 0)
+                        {
+                            ShowError("AdminUsers table not found. Please run the database creation script first.");
+                            return false;
+                        }
+                    }
+                    
+                    // Check how many admin users exist in total
+                    string countQuery = "SELECT COUNT(*) FROM AdminUsers";
+                    using (SqlCommand countCmd = new SqlCommand(countQuery, conn))
+                    {
+                        int totalUsers = (int)countCmd.ExecuteScalar();
+                        if (totalUsers == 0)
+                        {
+                            ShowError("No admin users found. Please run the database setup script.");
+                            return false;
+                        }
+                    }
+                    
+                    // Enhanced validation with detailed debugging
+                    string query = @"SELECT AdminID, Username, Password, Email 
+                                    FROM AdminUsers 
+                                    WHERE LTRIM(RTRIM(Username)) = @Username 
+                                    AND LTRIM(RTRIM(Password)) = @Password";
+                    
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username.Trim());
+                        cmd.Parameters.AddWithValue("@Password", password.Trim());
+                        
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // User found - successful login
+                                return true;
+                            }
+                            else
+                            {
+                                // User not found - check if username exists but password is wrong
+                                reader.Close();
+                                string usernameCheckQuery = "SELECT COUNT(*) FROM AdminUsers WHERE LTRIM(RTRIM(Username)) = @Username";
+                                using (SqlCommand usernameCmd = new SqlCommand(usernameCheckQuery, conn))
+                                {
+                                    usernameCmd.Parameters.AddWithValue("@Username", username.Trim());
+                                    int usernameCount = (int)usernameCmd.ExecuteScalar();
+                                    
+                                    if (usernameCount > 0)
+                                    {
+                                        ShowError("Invalid password for user: " + username);
+                                    }
+                                    else
+                                    {
+                                        ShowError("Username not found: " + username);
+                                    }
+                                }
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // SQL-specific errors
+                ShowError($"Database error: {sqlEx.Message}. Please check your database connection.");
+                System.Diagnostics.Debug.WriteLine($"SQL Error: {sqlEx.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                // General errors
+                ShowError($"Connection error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"General Error: {ex.Message}");
+                return false;
+            }
+        }
+
+        private void CreateRememberMeCookie(string username)
+        {
+            try
+            {
+                // Create encrypted remember me cookie
+                HttpCookie rememberCookie = new HttpCookie("AdminRememberMe");
+                
+                // Encrypt the username and timestamp
+                string cookieValue = FormsAuthentication.Encrypt(
+                    new FormsAuthenticationTicket(
+                        1, // version
+                        username, // name
+                        DateTime.Now, // issue date
+                        DateTime.Now.AddDays(7), // expiration
+                        true, // persistent
+                        "RememberMe", // user data
+                        FormsAuthentication.FormsCookiePath // cookie path
+                    )
+                );
+                
+                rememberCookie.Value = cookieValue;
+                rememberCookie.Expires = DateTime.Now.AddDays(7);
+                rememberCookie.HttpOnly = true; // Security: prevent XSS
+                rememberCookie.Secure = Request.IsSecureConnection; // Security: HTTPS only if available
+                rememberCookie.Path = FormsAuthentication.FormsCookiePath;
+                
+                Response.Cookies.Add(rememberCookie);
+            }
+            catch (Exception ex)
+            {
+                // Log error but don't fail login process
+                System.Diagnostics.Debug.WriteLine("Error creating remember me cookie: " + ex.Message);
+            }
+        }
+
+        private void CheckRememberMeCookie()
+        {
+            try
+            {
+                HttpCookie rememberCookie = Request.Cookies["AdminRememberMe"];
+                if (rememberCookie != null && !string.IsNullOrEmpty(rememberCookie.Value))
+                {
+                    // Decrypt and validate the cookie
+                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(rememberCookie.Value);
+                    
+                    if (ticket != null && !ticket.Expired && ticket.UserData == "RememberMe")
+                    {
+                        string username = ticket.Name;
+                        
+                        // Validate user still exists in database
+                        if (ValidateUserExists(username))
+                        {
+                            // Auto-login the user
+                            FormsAuthentication.SetAuthCookie(username, true);
+                            CreateUserSession(username);
+                            Session["AutoLoggedIn"] = true; // Flag to indicate auto-login
+                            
+                            // Refresh the remember me cookie for another 7 days
+                            CreateRememberMeCookie(username);
+                            
+                            // Log auto-login
+                            LogLoginActivity(username, true, "Auto-login via Remember Me");
+                            
+                            Response.Redirect("Dashboard.aspx");
+                        }
+                        else
+                        {
+                            // User no longer exists, clear the cookie
+                            ClearRememberMeCookie();
+                        }
+                    }
+                    else
+                    {
+                        // Invalid or expired ticket, clear the cookie
+                        ClearRememberMeCookie();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Error decrypting cookie, clear it
+                ClearRememberMeCookie();
+                System.Diagnostics.Debug.WriteLine("Error checking remember me cookie: " + ex.Message);
+            }
+        }
+
+        private bool ValidateUserExists(string username)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT COUNT(*) FROM AdminUsers WHERE Username = @Username";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error validating user existence: " + ex.Message);
+                return false;
+            }
+        }
+
+        private void ClearRememberMeCookie()
+        {
+            ClearCookie("AdminRememberMe");
+        }
+
+        #endregion
+
+        #region Activity Logging
+
+        private void LogLoginActivity(string username, bool success, string method = "Manual Login")
+        {
+            try
+            {
+                // Store login activity in session for immediate use
+                Session["LastLoginAttempt"] = DateTime.Now;
+                Session["LastLoginSuccess"] = success;
+                Session["LoginMethod"] = method;
+                
+                // Store in cookies for persistence
+                CreateCookie("LastLoginAttempt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), 7);
+                CreateCookie("LastLoginSuccess", success.ToString(), 7);
+                
+                // You could also log to database here for audit trail
+                // LogLoginToDatabase(username, success, method);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error logging login activity: " + ex.Message);
+            }
+        }
+
+        // Optional: Log to database for audit trail
+        private void LogLoginToDatabase(string username, bool success, string method)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = @"INSERT INTO LoginLog (Username, Success, Method, IPAddress, UserAgent, LoginTime) 
+                                   VALUES (@Username, @Success, @Method, @IPAddress, @UserAgent, @LoginTime)";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Success", success);
+                        cmd.Parameters.AddWithValue("@Method", method);
+                        cmd.Parameters.AddWithValue("@IPAddress", Request.UserHostAddress);
+                        cmd.Parameters.AddWithValue("@UserAgent", Request.UserAgent);
+                        cmd.Parameters.AddWithValue("@LoginTime", DateTime.Now);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error logging to database: " + ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Helper Methods
+
+        private void ShowError(string message)
+        {
+            lblError.Text = message;
+            pnlError.Visible = true;
+        }
+
+        #endregion
+    }
+}

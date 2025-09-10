@@ -1,0 +1,90 @@
+﻿using System;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Web.Security;
+using System.Web.UI;
+
+namespace shormiportfolio.Admin
+{
+    public partial class Login : System.Web.UI.Page
+    {
+        private string connectionString = ConfigurationManager.ConnectionStrings["PortfolioConnectionString"].ConnectionString;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // Check if user is already authenticated
+                if (User.Identity.IsAuthenticated)
+                {
+                    Response.Redirect("Dashboard.aspx");
+                }
+            }
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                ShowError("Please enter both username and password.");
+                return;
+            }
+
+            if (ValidateUser(username, password))
+            {
+                // Set authentication cookie
+                FormsAuthentication.SetAuthCookie(username, false);
+                
+                // Redirect to admin dashboard
+                string returnUrl = Request.QueryString["ReturnUrl"];
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    Response.Redirect(returnUrl);
+                }
+                else
+                {
+                    Response.Redirect("Dashboard.aspx");
+                }
+            }
+            else
+            {
+                ShowError("Invalid username or password.");
+            }
+        }
+
+        private bool ValidateUser(string username, string password)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT COUNT(*) FROM AdminUsers WHERE Username = @Username AND Password = @Password";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
+                        
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error (in production, use proper logging)
+                ShowError("Database connection error. Please try again.");
+                return false;
+            }
+        }
+
+        private void ShowError(string message)
+        {
+            lblError.Text = message;
+            pnlError.Visible = true;
+        }
+    }
+}

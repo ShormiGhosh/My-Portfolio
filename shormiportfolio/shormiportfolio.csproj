@@ -1,0 +1,423 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{84222FD0-2449-4F84-B4C6-4007D023AAAF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>shormiportfolio</RootNamespace>
+    <AssemblyName>shormiportfolio</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44323</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\AdminStyles.css" />
+    <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\Login.aspx" />
+    <Content Include="Admin\Tools.html" />
+    <Content Include="Database\createdatabase.sql" />
+    <Content Include="Database\create_login_audit.sql" />
+    <Content Include="Database\debug_login.sql" />
+    <Content Include="Database\fix_admin_user.sql" />
+    <Content Include="Database\verify_setup.sql" />
+    <Content Include="Default.aspx" />
+    <Content Include="FrontEnd\css\dynamic-styles.css" />
+    <Content Include="FrontEnd\index.html" />
+    <Content Include="FrontEnd\js\portfolio-loader.js" />
+    <Content Include="FrontEnd\photos\achievment1.jpeg" />
+    <Content Include="FrontEnd\photos\acievement2.jpeg" />
+    <Content Include="FrontEnd\photos\parabounce.JPG" />
+    <Content Include="FrontEnd\photos\pixaid.JPG" />
+    <Content Include="FrontEnd\photos\profile-about.jpg" />
+    <Content Include="FrontEnd\photos\profile.jpg" />
+    <Content Include="FrontEnd\photos\protibimb.JPG" />
+    <Content Include="FrontEnd\script.js" />
+    <Content Include="FrontEnd\style.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SessionCookieManager.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FrontEnd\.git\COMMIT_EDITMSG" />
+    <Content Include="FrontEnd\.git\config" />
+    <Content Include="FrontEnd\.git\description" />
+    <Content Include="FrontEnd\.git\FETCH_HEAD" />
+    <Content Include="FrontEnd\.git\HEAD" />
+    <Content Include="FrontEnd\.git\hooks\applypatch-msg.sample" />
+    <Content Include="FrontEnd\.git\hooks\commit-msg.sample" />
+    <Content Include="FrontEnd\.git\hooks\fsmonitor-watchman.sample" />
+    <Content Include="FrontEnd\.git\hooks\post-update.sample" />
+    <Content Include="FrontEnd\.git\hooks\pre-applypatch.sample" />
+    <Content Include="FrontEnd\.git\hooks\pre-commit.sample" />
+    <Content Include="FrontEnd\.git\hooks\pre-merge-commit.sample" />
+    <Content Include="FrontEnd\.git\hooks\pre-push.sample" />
+    <Content Include="FrontEnd\.git\hooks\pre-rebase.sample" />
+    <Content Include="FrontEnd\.git\hooks\pre-receive.sample" />
+    <Content Include="FrontEnd\.git\hooks\prepare-commit-msg.sample" />
+    <Content Include="FrontEnd\.git\hooks\push-to-checkout.sample" />
+    <Content Include="FrontEnd\.git\hooks\sendemail-validate.sample" />
+    <Content Include="FrontEnd\.git\hooks\update.sample" />
+    <Content Include="FrontEnd\.git\index" />
+    <Content Include="FrontEnd\.git\info\exclude" />
+    <Content Include="FrontEnd\.git\logs\HEAD" />
+    <Content Include="FrontEnd\.git\logs\refs\heads\main" />
+    <Content Include="FrontEnd\.git\logs\refs\remotes\origin\main" />
+    <Content Include="FrontEnd\.git\objects\00\652a8d8e3d8aed4721ab38cc73c19fe0d407e9" />
+    <Content Include="FrontEnd\.git\objects\02\429edd21dd3416315644a875fedff9531be7b2" />
+    <Content Include="FrontEnd\.git\objects\04\547dc159c03727755c7d23dbe0a3d3dfdc7501" />
+    <Content Include="FrontEnd\.git\objects\07\71ae23620c1e085e87ce4fd268f82759d5e0f0" />
+    <Content Include="FrontEnd\.git\objects\0b\4358a4408281425f3473b8750ff18ec9c303e8" />
+    <Content Include="FrontEnd\.git\objects\0b\8032b5cce21368d9b32e89103ad5e661bdd6dc" />
+    <Content Include="FrontEnd\.git\objects\0b\b51ce05f4ae2713461fcd3e4b5b5a41f6fdf57" />
+    <Content Include="FrontEnd\.git\objects\0d\1bb2f2595d68e24f66587014b8ecc385311ee9" />
+    <Content Include="FrontEnd\.git\objects\0d\4e9b2b699a56d7f6914c7c45cd371127806959" />
+    <Content Include="FrontEnd\.git\objects\0f\2f447448aeca947e9a7a33ef1382cddc1a07fe" />
+    <Content Include="FrontEnd\.git\objects\0f\cd27263962b0358d102bd5a79c3045f4c62c55" />
+    <Content Include="FrontEnd\.git\objects\10\a6c5ae81882b819f354b97d760312325aa94a7" />
+    <Content Include="FrontEnd\.git\objects\10\e0e3d1cad6194c1c092090897a84a8006d9846" />
+    <Content Include="FrontEnd\.git\objects\11\98e2b16655ff73849cb7a58efd4f017b2a6cbd" />
+    <Content Include="FrontEnd\.git\objects\13\7ecf86755c978200aff433cbdff71926a2ee9b" />
+    <Content Include="FrontEnd\.git\objects\13\ad1030239ff7980dd7df9332fbfa88eaac7705" />
+    <Content Include="FrontEnd\.git\objects\15\4d2df4637bc496cc9f3ef72ac74a1564f8fbae" />
+    <Content Include="FrontEnd\.git\objects\16\b24465b9035ccfe623d2db538e43a516af3b98" />
+    <Content Include="FrontEnd\.git\objects\19\84417141d674581ba08b04431efab37effac5b" />
+    <Content Include="FrontEnd\.git\objects\1c\97714890b29d10ed8e1fbc0e1a63030f344d0f" />
+    <Content Include="FrontEnd\.git\objects\1d\b575f9ca55a7112779a50c8fb68d16af59d114" />
+    <Content Include="FrontEnd\.git\objects\20\ab202a7a99ef9b8e63c38a7451bc9a344ca282" />
+    <Content Include="FrontEnd\.git\objects\21\681d9eddcc5b476a82baa23cfedfc389e43378" />
+    <Content Include="FrontEnd\.git\objects\21\7fb27f366700d480c315e401d0adfa72eac499" />
+    <Content Include="FrontEnd\.git\objects\21\b88aa30ef048367613e87bafa3c0017e45b332" />
+    <Content Include="FrontEnd\.git\objects\22\97c4650f5420337605fa06a5631e66fceda77d" />
+    <Content Include="FrontEnd\.git\objects\23\a12b8dfb98da3561a212482e4a400924d1f7e2" />
+    <Content Include="FrontEnd\.git\objects\24\7e541e2c1ebe15d3a27caf2e2dc722234a4d48" />
+    <Content Include="FrontEnd\.git\objects\24\a37f0959c352259cad2a4def3b4e3584b43c53" />
+    <Content Include="FrontEnd\.git\objects\26\07649a59ebb45d34f1d7e232d57185ceac507d" />
+    <Content Include="FrontEnd\.git\objects\26\b61f22cbe483564fb8536e498a21346f023236" />
+    <Content Include="FrontEnd\.git\objects\27\647220e2f7eb58a1236ecdcdb334524565385d" />
+    <Content Include="FrontEnd\.git\objects\29\195e2833e5a260c069152bf7eac5ee42d723e3" />
+    <Content Include="FrontEnd\.git\objects\29\46deb600db410646c2e6ab8ec94cdbacb1d26a" />
+    <Content Include="FrontEnd\.git\objects\2a\460bfe255e5229c3eb88199927ad4a13a97e6c" />
+    <Content Include="FrontEnd\.git\objects\2c\520a96326d70649aed75caa6e13a0d6371f740" />
+    <Content Include="FrontEnd\.git\objects\2d\c44d8f4cd6f19ca0f1c348f6fe1976caddb85b" />
+    <Content Include="FrontEnd\.git\objects\2e\7cd91add1c0b438d3077934fb0325d7da94811" />
+    <Content Include="FrontEnd\.git\objects\2e\c6fc9b4069b1eab6ea236d69fa90a5ef1fe210" />
+    <Content Include="FrontEnd\.git\objects\2e\dee668e7af0eaa025b60f2255aaeeb0f90a5cb" />
+    <Content Include="FrontEnd\.git\objects\2f\0fb9a2d88c3404827d5608b6c470b5c6b1780c" />
+    <Content Include="FrontEnd\.git\objects\2f\d00f137e5931814092fae9d544a1e52867bcd6" />
+    <Content Include="FrontEnd\.git\objects\30\3e5a33079e8cb7dae0de1dfa9cdf6c0edc04e5" />
+    <Content Include="FrontEnd\.git\objects\31\98b840012216d5fe259ef3082921c74e0135dc" />
+    <Content Include="FrontEnd\.git\objects\34\54d6aa8b9bcc24319d4275f123d5208d8c464e" />
+    <Content Include="FrontEnd\.git\objects\35\54075e1b0e7b495725a0d320ea8560a09b10fe" />
+    <Content Include="FrontEnd\.git\objects\36\0e92aa6970382a8c4ad85fe37887c08dcaec2f" />
+    <Content Include="FrontEnd\.git\objects\38\e964963e79372acdabd1ad0ad2b6ca12b7774a" />
+    <Content Include="FrontEnd\.git\objects\3a\7d52de5ecbe217d40fa8ab8870655fd67f5a34" />
+    <Content Include="FrontEnd\.git\objects\3a\a8e117f82014bb8ed440804bd1edf0dc983921" />
+    <Content Include="FrontEnd\.git\objects\3b\ace35288cba7349f4a0c80a31260cc70529cc3" />
+    <Content Include="FrontEnd\.git\objects\3c\8176dc87354da5926c4cceb5a435701875c30a" />
+    <Content Include="FrontEnd\.git\objects\3c\ca4b9462add1388f1ab10807962002d305d46e" />
+    <Content Include="FrontEnd\.git\objects\3c\dcde332fed037735063384c8c9149d79267c2e" />
+    <Content Include="FrontEnd\.git\objects\3d\5103bfa8df281ddf1abc845d42d749b389e13b" />
+    <Content Include="FrontEnd\.git\objects\3e\3c17e732f7425c3c98ab4482b0e0c5da68a49e" />
+    <Content Include="FrontEnd\.git\objects\41\74a21cfc35789af700646b215a001275ee9e75" />
+    <Content Include="FrontEnd\.git\objects\42\b398953b263002ea00079cf09fb6a58e8edc3f" />
+    <Content Include="FrontEnd\.git\objects\42\e08309e3b14927e2b3891d1eb630d15089ae6d" />
+    <Content Include="FrontEnd\.git\objects\43\4f9d1c66c5578487184ca816d30bba48a6fffd" />
+    <Content Include="FrontEnd\.git\objects\43\53eaaf98113a121d5dacbfbfd88ea118bdac1e" />
+    <Content Include="FrontEnd\.git\objects\46\eea2de2a4853b2868a547773dcb87478cc68e0" />
+    <Content Include="FrontEnd\.git\objects\48\93d9e0123a7d04e711482a3004fd6eaf4b46a6" />
+    <Content Include="FrontEnd\.git\objects\48\c5b2929cf3811aa313b9693933af5009a88b66" />
+    <Content Include="FrontEnd\.git\objects\49\b799767e5e1637dcb90cd29bdd88ee6cf35aed" />
+    <Content Include="FrontEnd\.git\objects\4c\ce60952f028c40a30d845b9a9b24a8f08f61ba" />
+    <Content Include="FrontEnd\.git\objects\4c\d662e74c457aa34098ab17f62a6f65072e373d" />
+    <Content Include="FrontEnd\.git\objects\4d\0120310226dee60912cbacc73d2c3f933bec00" />
+    <Content Include="FrontEnd\.git\objects\4e\2b7e77880679e2d6dff3d0fa7ddbd2b8675048" />
+    <Content Include="FrontEnd\.git\objects\4f\a332193878771256391a08bdba5692ad22efec" />
+    <Content Include="FrontEnd\.git\objects\50\bdaaf088bbca6a7d7960b046cd085bef43af80" />
+    <Content Include="FrontEnd\.git\objects\51\1eab42c2df9c9bb58bdc0104b562c77d05ab6f" />
+    <Content Include="FrontEnd\.git\objects\51\ab5b5864230c9e5d89ce4f8e8a70f87807d87c" />
+    <Content Include="FrontEnd\.git\objects\51\f00b097d6df30e1fed9124e58ae50e7ac35a68" />
+    <Content Include="FrontEnd\.git\objects\53\694284f9630af4b9dcdab8f5d2e175cf048d9c" />
+    <Content Include="FrontEnd\.git\objects\56\b5c1a28f616682f6c9a9522828d1e30f9b457a" />
+    <Content Include="FrontEnd\.git\objects\57\33481e476fa1f7f511cbe7703785e3142fa408" />
+    <Content Include="FrontEnd\.git\objects\58\3063476ba9554ab64d6607d7f266885a6116d2" />
+    <Content Include="FrontEnd\.git\objects\58\9d7ee9a9ed40bc62928f3d15d694124127b9ae" />
+    <Content Include="FrontEnd\.git\objects\5c\b9dfb0c2fae8df13540e84d6c8d67b6a66d38c" />
+    <Content Include="FrontEnd\.git\objects\5e\3bcdb9407a251bcdc26de0307524680cf24c0b" />
+    <Content Include="FrontEnd\.git\objects\5e\bef7fe292eaf725025142a43f8f667700cf003" />
+    <Content Include="FrontEnd\.git\objects\5e\c85f36e701c9756fda8283c8983d7e8c55eb0e" />
+    <Content Include="FrontEnd\.git\objects\5e\fd82ed64839b76e2d51e0a6757f54d5f1db824" />
+    <Content Include="FrontEnd\.git\objects\61\1436194c093ec53688730c05ecc1e2e163bbd2" />
+    <Content Include="FrontEnd\.git\objects\62\38f3ecd583fe0d9d923e592a49e13f1ce8967a" />
+    <Content Include="FrontEnd\.git\objects\62\e14c6455d4c5c03565b492b05d1a13ebd89f93" />
+    <Content Include="FrontEnd\.git\objects\64\db19f579259d9c787ed3029be3913a9f5748f0" />
+    <Content Include="FrontEnd\.git\objects\65\853816939af79816b097dda40fbac909ba6623" />
+    <Content Include="FrontEnd\.git\objects\68\f4db2ab683a536c0caa70a97c095479ce3bc6d" />
+    <Content Include="FrontEnd\.git\objects\6a\1235fb7ba6ba6b60fc4e575f9610ee1909062d" />
+    <Content Include="FrontEnd\.git\objects\6a\b98abb77ec87d1bfd678e4a087a763accd4fb6" />
+    <Content Include="FrontEnd\.git\objects\6b\21250e95abb18b21c7150882ad3996a85ca40d" />
+    <Content Include="FrontEnd\.git\objects\6c\626efa5a43c94fdc1496d97545d50e4bcf4298" />
+    <Content Include="FrontEnd\.git\objects\6d\9990c9a25352dbf9bd54b115451c514b1c19c3" />
+    <Content Include="FrontEnd\.git\objects\6f\0e5acc989cd098c4645f67fb7da46d45ba179f" />
+    <Content Include="FrontEnd\.git\objects\6f\4fb6c8cadcbbb459db7e2d58608112942cd0da" />
+    <Content Include="FrontEnd\.git\objects\6f\a29f5670fbcaa51c6aa24b8c5dc2e5aa4e58cb" />
+    <Content Include="FrontEnd\.git\objects\6f\c2d69aad585e299f035f88c35f77e0bc28aed5" />
+    <Content Include="FrontEnd\.git\objects\70\2c55723e65d8f6c4e0b6b2ace224ebbec0da75" />
+    <Content Include="FrontEnd\.git\objects\70\77f16a0e65350f2bdd0747e9e4594cb4fcda1f" />
+    <Content Include="FrontEnd\.git\objects\71\d6417fb77ae95a65a1d338ea74170bad02253b" />
+    <Content Include="FrontEnd\.git\objects\72\e55d8b0274422e2d332c50fb93fc0ddcc1cf5b" />
+    <Content Include="FrontEnd\.git\objects\73\4d89fe65969455cb83790fc12d334aec834786" />
+    <Content Include="FrontEnd\.git\objects\75\9f984c7f8b3990366f0bd0dc4e994860d7ea40" />
+    <Content Include="FrontEnd\.git\objects\75\c29469ff18873c5fb2253cec731c4b23f489ec" />
+    <Content Include="FrontEnd\.git\objects\77\248bfb1dd9d193fc3b2d7acbc1e2714bc80fc0" />
+    <Content Include="FrontEnd\.git\objects\78\a185143e6ab00b3c0dd181de0b9ffc972a2375" />
+    <Content Include="FrontEnd\.git\objects\7c\4397746d214d36fb77fe9e7c776afb91b50894" />
+    <Content Include="FrontEnd\.git\objects\7d\17ef6505bdab376a0d977effd1efb6acb1bc53" />
+    <Content Include="FrontEnd\.git\objects\7e\8bbedca13ee08c7c9ba4026016ee0861c79ab1" />
+    <Content Include="FrontEnd\.git\objects\80\56ce24fa46bd755a9449230312a7456d0f4cf1" />
+    <Content Include="FrontEnd\.git\objects\82\fcdeb2c4249f1de045815130ac91b697b4bb87" />
+    <Content Include="FrontEnd\.git\objects\83\47852654c14667e0e86640f707b2842e31fc74" />
+    <Content Include="FrontEnd\.git\objects\83\50880b91e58e66424b8b054936a84972869e11" />
+    <Content Include="FrontEnd\.git\objects\86\a25a356f4f90e5bfce7863fb6b8c071610bd1e" />
+    <Content Include="FrontEnd\.git\objects\87\4d1f548eb262a3bc8491ded53ef2c6fa560529" />
+    <Content Include="FrontEnd\.git\objects\88\d9e6643cfd04769fae1f5ab0310445f8eba89d" />
+    <Content Include="FrontEnd\.git\objects\89\4f8a0f483bbce3ea0015412a02e714df422f3f" />
+    <Content Include="FrontEnd\.git\objects\8a\6fc3bd5527035b1894d972569b112e983bb688" />
+    <Content Include="FrontEnd\.git\objects\8b\dc416ea1f89ec5bc11302554d1d971df25e1b5" />
+    <Content Include="FrontEnd\.git\objects\8c\cd41eb38489f0e29678ae8d1f84a7c4416798c" />
+    <Content Include="FrontEnd\.git\objects\8f\7b962a6d2a72b71eb298917c3a4c110e5931ae" />
+    <Content Include="FrontEnd\.git\objects\90\0e64e4076b3e95197d45b084700689c77f517e" />
+    <Content Include="FrontEnd\.git\objects\93\bc1a1a36cf210ccfcc5f1e201b4a9148fb174b" />
+    <Content Include="FrontEnd\.git\objects\94\9748e3ebfae76c4e7d4a8510dcbeda99f86144" />
+    <Content Include="FrontEnd\.git\objects\94\eadd294a144ade900b6c50f20bf69640538e94" />
+    <Content Include="FrontEnd\.git\objects\95\06eb1e7fbff741475094738abdb1e986a51919" />
+    <Content Include="FrontEnd\.git\objects\95\704f44dc09c361bccce2026c8a6d30b8b6b4b0" />
+    <Content Include="FrontEnd\.git\objects\96\e81d8fec43b066eeff07a5812f6a8c4dfc405f" />
+    <Content Include="FrontEnd\.git\objects\97\29bfe6757e1d894748c2b39606a68104f89464" />
+    <Content Include="FrontEnd\.git\objects\98\470c33ef1ddd7b3f0173718dff75509d2bf184" />
+    <Content Include="FrontEnd\.git\objects\9a\7ca05d61119658d5f5a0dcad1c4625fa48be35" />
+    <Content Include="FrontEnd\.git\objects\9b\dba6d009b9cf41e277bf81a3e96f610856e6e0" />
+    <Content Include="FrontEnd\.git\objects\9e\26d5ea6512e33ac13a55a6d9f59c1b5c0cfbbf" />
+    <Content Include="FrontEnd\.git\objects\9e\99f61465d9a37569bba8b14b4578481c3ce6bf" />
+    <Content Include="FrontEnd\.git\objects\9f\1a0dc2a61ebd9880477ed4f67b8d55e74af2b9" />
+    <Content Include="FrontEnd\.git\objects\a0\184cea88a9d20ba8449edf053371ffd01fefc4" />
+    <Content Include="FrontEnd\.git\objects\a1\234ce81a34b96a23173c2c4af7863ce36e5d85" />
+    <Content Include="FrontEnd\.git\objects\a4\1ac0b6f4d3e114b8fc8c75c5dcf2a11547db62" />
+    <Content Include="FrontEnd\.git\objects\a4\4a8add82ae86bc7debaa7ff13f333783b87692" />
+    <Content Include="FrontEnd\.git\objects\a8\c36e65703721764fe7f84828e9ddc560aad21a" />
+    <Content Include="FrontEnd\.git\objects\aa\7a3e299f131cdc2c39196d282a05da227cfaac" />
+    <Content Include="FrontEnd\.git\objects\ac\413795eed2538812c3ea35b59be4b03a26fd0f" />
+    <Content Include="FrontEnd\.git\objects\ad\3bdd3a0b36af0fc4773c54f628bd78bcf76650" />
+    <Content Include="FrontEnd\.git\objects\ad\9c238cad3407ff8cd3a47781ca737942030007" />
+    <Content Include="FrontEnd\.git\objects\ad\a40e0648094632c89c01dea850af49b352081f" />
+    <Content Include="FrontEnd\.git\objects\ad\b45bdf918c4f7667e7aa2ed340aae0846e67d3" />
+    <Content Include="FrontEnd\.git\objects\b3\7dd9a72348aa7ef26473e83e25b7511273234e" />
+    <Content Include="FrontEnd\.git\objects\b5\f790aa157e2ad09f16574823dbb5c5fdd4dcf9" />
+    <Content Include="FrontEnd\.git\objects\b6\893e865cdfaa1a25123aa6f7b0c15cae9c8ab1" />
+    <Content Include="FrontEnd\.git\objects\b8\88e0ff8e11a6571faddff79a75f680671f4ee5" />
+    <Content Include="FrontEnd\.git\objects\b9\862b0e9bb668903db150e2f70f018850ea972c" />
+    <Content Include="FrontEnd\.git\objects\b9\f3af1f8083ca4f4c13e3bc78e34a22cc4490dd" />
+    <Content Include="FrontEnd\.git\objects\ba\2264105975cbd6a8dd1aaf218119b168be13ab" />
+    <Content Include="FrontEnd\.git\objects\ba\e728e266d4ff652a517a3cfecedc0429e47a2f" />
+    <Content Include="FrontEnd\.git\objects\c1\01e41db552925a6654b5218c53945ee9fe9c1b" />
+    <Content Include="FrontEnd\.git\objects\c2\273cf45c6a9b88bb6df814687766fcf63b26eb" />
+    <Content Include="FrontEnd\.git\objects\c2\9baa75ee16cf8dbbacf2847e51942253b92cfd" />
+    <Content Include="FrontEnd\.git\objects\c7\d4fb8d52e06aee427725a8278c082f1909550f" />
+    <Content Include="FrontEnd\.git\objects\c8\169b0d001bbc1c21d807f372c0fe08c5a4a760" />
+    <Content Include="FrontEnd\.git\objects\c9\195fccb1f0511ded463278849309e70daaef9c" />
+    <Content Include="FrontEnd\.git\objects\cb\53fc6d03c5cc08f4d6d4c4826afc3ec8da2700" />
+    <Content Include="FrontEnd\.git\objects\ce\72ac60cf253c82870e9e4afd48c93382c40638" />
+    <Content Include="FrontEnd\.git\objects\cf\138d3825dadeb254594e1b146f567ebc353b25" />
+    <Content Include="FrontEnd\.git\objects\cf\729d31bf38c72f7b2b66445c8ad59f9f32c45d" />
+    <Content Include="FrontEnd\.git\objects\d5\3a81a9a02fc88779edb8c14cce8604dc5f040a" />
+    <Content Include="FrontEnd\.git\objects\d6\93b2c22774e3099fc22ce26d1c5838744c7c6f" />
+    <Content Include="FrontEnd\.git\objects\d7\b2a2ce4c44ca551f76e88d5e6e346a8c951049" />
+    <Content Include="FrontEnd\.git\objects\d8\722496b75a826ca5a332b069ab2d9d2fb4281a" />
+    <Content Include="FrontEnd\.git\objects\d8\d752dc892ea10c8c903db30985ff1676b7123f" />
+    <Content Include="FrontEnd\.git\objects\d9\9ec175ea07923a282cb0f7688b4cd9d60d4f5a" />
+    <Content Include="FrontEnd\.git\objects\db\f846a623fdc0deb3c7965cf3e5783085ced551" />
+    <Content Include="FrontEnd\.git\objects\de\1ec5e5949ae4f05d314518ed909648b66af510" />
+    <Content Include="FrontEnd\.git\objects\e2\092095ac0c3f6f06bdd232341759dd3054eb23" />
+    <Content Include="FrontEnd\.git\objects\e3\76a20352bb547c881ad93a9529ad3fedd5fae9" />
+    <Content Include="FrontEnd\.git\objects\e3\b5464239b3ce21934b67a8f7fefca61359738c" />
+    <Content Include="FrontEnd\.git\objects\e5\0b11652020bbbd38ed2afaa285af533568ad82" />
+    <Content Include="FrontEnd\.git\objects\e5\0edac8367e19a4e67c9055ee79bec1c2514473" />
+    <Content Include="FrontEnd\.git\objects\e6\9de29bb2d1d6434b8b29ae775ad8c2e48c5391" />
+    <Content Include="FrontEnd\.git\objects\e6\af9609b65b535fc0780735ec5d3ea1d865f1ee" />
+    <Content Include="FrontEnd\.git\objects\e6\b30e5f9f24df4802d73bdcadcac6a1d90cc086" />
+    <Content Include="FrontEnd\.git\objects\e7\a6979fd840c0e7c51b0947048747c70910e91b" />
+    <Content Include="FrontEnd\.git\objects\e9\ebf4ea4f7f8e6669723c1baf5b5b0cfdd89a82" />
+    <Content Include="FrontEnd\.git\objects\ea\62229ba075df13a08592e70d8a7e7b433fa6ae" />
+    <Content Include="FrontEnd\.git\objects\ea\fb192b625ab55eba9526a9c4ec52698c79d7ef" />
+    <Content Include="FrontEnd\.git\objects\ed\3414b36a44e3d06873cd9f1c7059d8ca90c099" />
+    <Content Include="FrontEnd\.git\objects\ed\45343f3e2a1257dae51e7d1e7b3461fa9141c0" />
+    <Content Include="FrontEnd\.git\objects\ee\4c2b921e8b6b646de3433e5b2aa25b99ea23a6" />
+    <Content Include="FrontEnd\.git\objects\ef\574bb6af0d9b86ae1f92d2a9ca3fec8dc61720" />
+    <Content Include="FrontEnd\.git\objects\f1\ca25c72b6a4e9bb8d077578e82778350b5f6c0" />
+    <Content Include="FrontEnd\.git\objects\f2\1286d2d6a1d3bc4b978be9bc866c3c8ee930b2" />
+    <Content Include="FrontEnd\.git\objects\f3\82a4224a575e65cc0741c39cd06687a9b57c39" />
+    <Content Include="FrontEnd\.git\objects\f4\7e609332228456fe27a0ea3a8ff29f2c35582b" />
+    <Content Include="FrontEnd\.git\objects\f6\6d5726637d3996eea8d78afee30e87bcc3d341" />
+    <Content Include="FrontEnd\.git\objects\f8\468a652440be5ecce5ee80442d8a5e66c99d37" />
+    <Content Include="FrontEnd\.git\objects\f9\3bb646fa8c1315ac43341837f9b50f56e5be59" />
+    <Content Include="FrontEnd\.git\objects\fa\1be8a7a22344e4fb3597fdac557ca4dff243ed" />
+    <Content Include="FrontEnd\.git\objects\fa\8ad65196969677548106912e98ba0fbc9484d0" />
+    <Content Include="FrontEnd\.git\objects\fa\cb92759ab5552b95a44fe5a44e5385c0e272c7" />
+    <Content Include="FrontEnd\.git\objects\fa\eeafeb767fc59caa31beb8c54f53bea50f0859" />
+    <Content Include="FrontEnd\.git\objects\fb\79b1868fcd310c1ec609d1e3e0a8fd1e7abf17" />
+    <Content Include="FrontEnd\.git\objects\fb\b216aab19ab62fd9586bca462379ee708688fd" />
+    <Content Include="FrontEnd\.git\objects\fb\bdbcec970c8378b38492d633818009c4b594bb" />
+    <Content Include="FrontEnd\.git\objects\fc\3a22beef17c704374f5f09f22e12eb07f07876" />
+    <Content Include="FrontEnd\.git\objects\fc\69fd6b53dba10b1ba2ecc4f4c155149e23c39f" />
+    <Content Include="FrontEnd\.git\objects\fe\0a606ec07b65907441c80ac9cd323f05df7a71" />
+    <Content Include="FrontEnd\.git\objects\fe\78ed011632665aba41a11e043d8f2778bbd95c" />
+    <Content Include="FrontEnd\.git\ORIG_HEAD" />
+    <Content Include="FrontEnd\.git\refs\heads\main" />
+    <Content Include="FrontEnd\.git\refs\remotes\origin\main" />
+    <Content Include="FrontEnd\.vs\Personal Portfolio\config\applicationhost.config" />
+    <Content Include="FrontEnd\.vs\Personal Portfolio\copilot-chat\39e70c2f\sessions\231734e0-62e6-4fc6-9389-1691b075b1b5" />
+    <Content Include="FrontEnd\.vs\Personal Portfolio\CopilotIndices\17.14.995.13737\CodeChunks.db" />
+    <Content Include="FrontEnd\.vs\Personal Portfolio\CopilotIndices\17.14.995.13737\SemanticSymbols.db" />
+    <Content Include="FrontEnd\.vs\Personal Portfolio\FileContentIndex\3a80656d-1cc8-4d0f-b128-3749faf402d1.vsidx" />
+    <Content Include="FrontEnd\.vs\Personal Portfolio\v17\.suo" />
+    <Content Include="FrontEnd\.vs\Personal Portfolio\v17\DocumentLayout.backup.json" />
+    <Content Include="FrontEnd\.vs\Personal Portfolio\v17\DocumentLayout.json" />
+    <Content Include="FrontEnd\assets\Shormi Ghosh CV.pdf" />
+    <Content Include="COOKIES_SESSION_GUIDE.md" />
+    <Content Include="api\PortfolioData.ashx" />
+    <Content Include="api\RefreshNotifier.ashx" />
+    <None Include="packages.config" />
+    <Content Include="README.md" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FrontEnd\.git\objects\info\" />
+    <Folder Include="FrontEnd\.git\objects\pack\" />
+    <Folder Include="FrontEnd\.git\refs\tags\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2770</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44323/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

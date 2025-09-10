@@ -1,0 +1,55 @@
+using System;
+using System.Web;
+using System.Web.Security;
+
+namespace shormiportfolio
+{
+    public class Global : HttpApplication
+    {
+        protected void Application_Start(object sender, EventArgs e)
+        {
+            // Application startup logic
+        }
+
+        protected void Application_End(object sender, EventArgs e)
+        {
+            // Application shutdown logic
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            // Global error handling
+            Exception lastError = Server.GetLastError();
+            
+            // Log the error (in production, use proper logging)
+            // For now, clear the error
+            Server.ClearError();
+            
+            // Redirect to a custom error page if needed
+            // Response.Redirect("~/Error.aspx");
+        }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            // Session start logic
+            Session["SessionStartTime"] = DateTime.Now;
+        }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+            // Session end logic - cleanup if needed
+        }
+
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+            // This event occurs for each request and can be used to implement custom authentication logic
+            // The forms authentication module has already processed the authentication cookie by this point
+        }
+
+        protected void Application_PostAuthenticateRequest(object sender, EventArgs e)
+        {
+            // This event occurs after the user has been authenticated
+            // You can access User.Identity here if needed
+        }
+    }
+}

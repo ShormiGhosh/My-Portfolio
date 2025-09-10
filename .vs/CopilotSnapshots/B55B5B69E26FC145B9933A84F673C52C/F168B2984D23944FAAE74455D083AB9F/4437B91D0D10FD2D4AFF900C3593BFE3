@@ -1,0 +1,936 @@
+﻿using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace shormiportfolio.Admin
+{
+    public partial class Dashboard : System.Web.UI.Page
+    {
+        private string connectionString = ConfigurationManager.ConnectionStrings["PortfolioConnectionString"].ConnectionString;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.RedirectToLoginPage();
+                return;
+            }
+
+            if (!IsPostBack)
+            {
+                // Set username from session or user identity
+                string username = Session["AdminUsername"] as string ?? User.Identity.Name;
+                lblUsername.Text = username;
+                
+                // Check if user was auto-logged in via remember me cookie
+                if (Session["AutoLoggedIn"] != null && (bool)Session["AutoLoggedIn"])
+                {
+                    // Show a welcome back message or indicator
+                    ShowMessage($"Welcome back, {username}! You were automatically logged in.", true);
+                    Session.Remove("AutoLoggedIn"); // Remove the flag after showing message
+                }
+                
+                LoadDashboardStats();
+                LoadSkillCategories();
+                LoadAllData();
+            }
+        }
+
+        #region Navigation
+        protected void NavigateSection(object sender, CommandEventArgs e)
+        {
+            HideAllPanels();
+            ResetNavigation();
+
+            string section = e.CommandArgument.ToString();
+            switch (section)
+            {
+                case "dashboard":
+                    pnlDashboard.Visible = true;
+                    btnDashboard.CssClass = "nav-item active";
+                    LoadDashboardStats();
+                    break;
+                case "profile":
+                    pnlProfile.Visible = true;
+                    btnProfile.CssClass = "nav-item active";
+                    LoadProfileData();
+                    break;
+                case "skills":
+                    pnlSkills.Visible = true;
+                    btnSkills.CssClass = "nav-item active";
+                    LoadSkills();
+                    break;
+                case "projects":
+                    pnlProjects.Visible = true;
+                    btnProjects.CssClass = "nav-item active";
+                    LoadProjects();
+                    break;
+                case "achievements":
+                    pnlAchievements.Visible = true;
+                    btnAchievements.CssClass = "nav-item active";
+                    LoadAchievements();
+                    break;
+                case "work":
+                    pnlWorkExperience.Visible = true;
+                    btnWorkExperience.CssClass = "nav-item active";
+                    LoadWorkExperience();
+                    break;
+            }
+        }
+
+        private void HideAllPanels()
+        {
+            pnlDashboard.Visible = false;
+            pnlProfile.Visible = false;
+            pnlSkills.Visible = false;
+            pnlProjects.Visible = false;
+            pnlAchievements.Visible = false;
+            pnlWorkExperience.Visible = false;
+            pnlSkillForm.Visible = false;
+            pnlProjectForm.Visible = false;
+            pnlAchievementForm.Visible = false;
+            pnlWorkExpForm.Visible = false;
+            pnlMessage.Visible = false;
+        }
+
+        private void ResetNavigation()
+        {
+            btnDashboard.CssClass = "nav-item";
+            btnProfile.CssClass = "nav-item";
+            btnSkills.CssClass = "nav-item";
+            btnProjects.CssClass = "nav-item";
+            btnAchievements.CssClass = "nav-item";
+            btnWorkExperience.CssClass = "nav-item";
+        }
+        #endregion
+
+        #region Dashboard Stats
+        private void LoadDashboardStats()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    
+                    // Count skills
+                    string skillsQuery = "SELECT COUNT(*) FROM Skills";
+                    using (SqlCommand cmd = new SqlCommand(skillsQuery, conn))
+                    {
+                        lblSkillsCount.Text = cmd.ExecuteScalar().ToString();
+                    }
+
+                    // Count projects
+                    string projectsQuery = "SELECT COUNT(*) FROM Projects";
+                    using (SqlCommand cmd = new SqlCommand(projectsQuery, conn))
+                    {
+                        lblProjectsCount.Text = cmd.ExecuteScalar().ToString();
+                    }
+
+                    // Count achievements
+                    string achievementsQuery = "SELECT COUNT(*) FROM Achievements";
+                    using (SqlCommand cmd = new SqlCommand(achievementsQuery, conn))
+                    {
+                        lblAchievementsCount.Text = cmd.ExecuteScalar().ToString();
+                    }
+
+                    // Count work experiences
+                    string workExpQuery = "SELECT COUNT(*) FROM WorkExperience";
+                    using (SqlCommand cmd = new SqlCommand(workExpQuery, conn))
+                    {
+                        lblWorkExpCount.Text = cmd.ExecuteScalar().ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading dashboard stats: " + ex.Message, false);
+            }
+        }
+        #endregion
+
+        #region Profile Management
+        private void LoadProfileData()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT TOP 1 ProfileImagePath, CVPath FROM Profile";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                txtProfileImagePath.Text = reader["ProfileImagePath"].ToString();
+                                txtCVPath.Text = reader["CVPath"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading profile data: " + ex.Message, false);
+            }
+        }
+
+        protected void btnUpdateProfile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = @"
+                        IF EXISTS (SELECT 1 FROM Profile)
+                            UPDATE Profile SET ProfileImagePath = @ProfileImagePath, CVPath = @CVPath
+                        ELSE
+                            INSERT INTO Profile (ProfileImagePath, CVPath) VALUES (@ProfileImagePath, @CVPath)";
+                    
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ProfileImagePath", txtProfileImagePath.Text.Trim());
+                        cmd.Parameters.AddWithValue("@CVPath", txtCVPath.Text.Trim());
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                ShowMessage("Profile updated successfully!", true);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error updating profile: " + ex.Message, false);
+            }
+        }
+        #endregion
+
+        #region Skills Management
+        private void LoadSkillCategories()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT CategoryID, CategoryName FROM SkillCategories ORDER BY CategoryName";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            ddlSkillCategory.DataSource = dt;
+                            ddlSkillCategory.DataTextField = "CategoryName";
+                            ddlSkillCategory.DataValueField = "CategoryID";
+                            ddlSkillCategory.DataBind();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading skill categories: " + ex.Message, false);
+            }
+        }
+
+        private void LoadSkills()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = @"
+                        SELECT s.SkillID, s.SkillName, sc.CategoryName 
+                        FROM Skills s 
+                        INNER JOIN SkillCategories sc ON s.CategoryID = sc.CategoryID 
+                        ORDER BY sc.CategoryName, s.SkillName";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            gvSkills.DataSource = dt;
+                            gvSkills.DataBind();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading skills: " + ex.Message, false);
+            }
+        }
+
+        protected void btnAddSkill_Click(object sender, EventArgs e)
+        {
+            pnlSkillForm.Visible = true;
+            lblSkillFormTitle.Text = "Add New Skill";
+            hfSkillID.Value = "";
+            txtSkillName.Text = "";
+            ddlSkillCategory.SelectedIndex = 0;
+        }
+
+        protected void btnSaveSkill_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query;
+                    
+                    if (string.IsNullOrEmpty(hfSkillID.Value))
+                    {
+                        // Insert new skill
+                        query = "INSERT INTO Skills (CategoryID, SkillName) VALUES (@CategoryID, @SkillName)";
+                    }
+                    else
+                    {
+                        // Update existing skill
+                        query = "UPDATE Skills SET CategoryID = @CategoryID, SkillName = @SkillName WHERE SkillID = @SkillID";
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@CategoryID", ddlSkillCategory.SelectedValue);
+                        cmd.Parameters.AddWithValue("@SkillName", txtSkillName.Text.Trim());
+                        
+                        if (!string.IsNullOrEmpty(hfSkillID.Value))
+                        {
+                            cmd.Parameters.AddWithValue("@SkillID", hfSkillID.Value);
+                        }
+                        
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                
+                pnlSkillForm.Visible = false;
+                LoadSkills();
+                ShowMessage("Skill saved successfully!", true);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error saving skill: " + ex.Message, false);
+            }
+        }
+
+        protected void btnCancelSkill_Click(object sender, EventArgs e)
+        {
+            pnlSkillForm.Visible = false;
+        }
+
+        protected void gvSkills_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int skillId = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "EditSkill")
+            {
+                EditSkill(skillId);
+            }
+            else if (e.CommandName == "DeleteSkill")
+            {
+                DeleteSkill(skillId);
+            }
+        }
+
+        private void EditSkill(int skillId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT CategoryID, SkillName FROM Skills WHERE SkillID = @SkillID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@SkillID", skillId);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                pnlSkillForm.Visible = true;
+                                lblSkillFormTitle.Text = "Edit Skill";
+                                hfSkillID.Value = skillId.ToString();
+                                ddlSkillCategory.SelectedValue = reader["CategoryID"].ToString();
+                                txtSkillName.Text = reader["SkillName"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading skill data: " + ex.Message, false);
+            }
+        }
+
+        private void DeleteSkill(int skillId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "DELETE FROM Skills WHERE SkillID = @SkillID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@SkillID", skillId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                LoadSkills();
+                ShowMessage("Skill deleted successfully!", true);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error deleting skill: " + ex.Message, false);
+            }
+        }
+        #endregion
+
+        #region Projects Management
+        private void LoadProjects()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT ProjectID, Title, Description, ImagePath, GitHubURL FROM Projects ORDER BY ProjectID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            gvProjects.DataSource = dt;
+                            gvProjects.DataBind();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading projects: " + ex.Message, false);
+            }
+        }
+
+        protected void btnAddProject_Click(object sender, EventArgs e)
+        {
+            pnlProjectForm.Visible = true;
+            lblProjectFormTitle.Text = "Add New Project";
+            hfProjectID.Value = "";
+            ClearProjectForm();
+        }
+
+        protected void btnSaveProject_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query;
+                    
+                    if (string.IsNullOrEmpty(hfProjectID.Value))
+                    {
+                        query = "INSERT INTO Projects (Title, Description, ImagePath, GitHubURL) VALUES (@Title, @Description, @ImagePath, @GitHubURL)";
+                    }
+                    else
+                    {
+                        query = "UPDATE Projects SET Title = @Title, Description = @Description, ImagePath = @ImagePath, GitHubURL = @GitHubURL WHERE ProjectID = @ProjectID";
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Title", txtProjectTitle.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Description", txtProjectDescription.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ImagePath", txtProjectImagePath.Text.Trim());
+                        cmd.Parameters.AddWithValue("@GitHubURL", txtProjectGitHubURL.Text.Trim());
+                        
+                        if (!string.IsNullOrEmpty(hfProjectID.Value))
+                        {
+                            cmd.Parameters.AddWithValue("@ProjectID", hfProjectID.Value);
+                        }
+                        
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                
+                pnlProjectForm.Visible = false;
+                LoadProjects();
+                ShowMessage("Project saved successfully!", true);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error saving project: " + ex.Message, false);
+            }
+        }
+
+        protected void btnCancelProject_Click(object sender, EventArgs e)
+        {
+            pnlProjectForm.Visible = false;
+        }
+
+        protected void gvProjects_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int projectId = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "EditProject")
+            {
+                EditProject(projectId);
+            }
+            else if (e.CommandName == "DeleteProject")
+            {
+                DeleteProject(projectId);
+            }
+        }
+
+        private void EditProject(int projectId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT Title, Description, ImagePath, GitHubURL FROM Projects WHERE ProjectID = @ProjectID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ProjectID", projectId);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                pnlProjectForm.Visible = true;
+                                lblProjectFormTitle.Text = "Edit Project";
+                                hfProjectID.Value = projectId.ToString();
+                                txtProjectTitle.Text = reader["Title"].ToString();
+                                txtProjectDescription.Text = reader["Description"].ToString();
+                                txtProjectImagePath.Text = reader["ImagePath"].ToString();
+                                txtProjectGitHubURL.Text = reader["GitHubURL"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading project data: " + ex.Message, false);
+            }
+        }
+
+        private void DeleteProject(int projectId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "DELETE FROM Projects WHERE ProjectID = @ProjectID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ProjectID", projectId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                LoadProjects();
+                ShowMessage("Project deleted successfully!", true);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error deleting project: " + ex.Message, false);
+            }
+        }
+
+        private void ClearProjectForm()
+        {
+            txtProjectTitle.Text = "";
+            txtProjectDescription.Text = "";
+            txtProjectImagePath.Text = "";
+            txtProjectGitHubURL.Text = "";
+        }
+        #endregion
+
+        #region Achievements Management
+        private void LoadAchievements()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT AchievementID, Title, Description, ImagePath FROM Achievements ORDER BY AchievementID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            gvAchievements.DataSource = dt;
+                            gvAchievements.DataBind();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading achievements: " + ex.Message, false);
+            }
+        }
+
+        protected void btnAddAchievement_Click(object sender, EventArgs e)
+        {
+            pnlAchievementForm.Visible = true;
+            lblAchievementFormTitle.Text = "Add New Achievement";
+            hfAchievementID.Value = "";
+            ClearAchievementForm();
+        }
+
+        protected void btnSaveAchievement_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query;
+                    
+                    if (string.IsNullOrEmpty(hfAchievementID.Value))
+                    {
+                        query = "INSERT INTO Achievements (Title, Description, ImagePath) VALUES (@Title, @Description, @ImagePath)";
+                    }
+                    else
+                    {
+                        query = "UPDATE Achievements SET Title = @Title, Description = @Description, ImagePath = @ImagePath WHERE AchievementID = @AchievementID";
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Title", txtAchievementTitle.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Description", txtAchievementDescription.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ImagePath", txtAchievementImagePath.Text.Trim());
+                        
+                        if (!string.IsNullOrEmpty(hfAchievementID.Value))
+                        {
+                            cmd.Parameters.AddWithValue("@AchievementID", hfAchievementID.Value);
+                        }
+                        
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                
+                pnlAchievementForm.Visible = false;
+                LoadAchievements();
+                ShowMessage("Achievement saved successfully!", true);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error saving achievement: " + ex.Message, false);
+            }
+        }
+
+        protected void btnCancelAchievement_Click(object sender, EventArgs e)
+        {
+            pnlAchievementForm.Visible = false;
+        }
+
+        protected void gvAchievements_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int achievementId = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "EditAchievement")
+            {
+                EditAchievement(achievementId);
+            }
+            else if (e.CommandName == "DeleteAchievement")
+            {
+                DeleteAchievement(achievementId);
+            }
+        }
+
+        private void EditAchievement(int achievementId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT Title, Description, ImagePath FROM Achievements WHERE AchievementID = @AchievementID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@AchievementID", achievementId);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                pnlAchievementForm.Visible = true;
+                                lblAchievementFormTitle.Text = "Edit Achievement";
+                                hfAchievementID.Value = achievementId.ToString();
+                                txtAchievementTitle.Text = reader["Title"].ToString();
+                                txtAchievementDescription.Text = reader["Description"].ToString();
+                                txtAchievementImagePath.Text = reader["ImagePath"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading achievement data: " + ex.Message, false);
+            }
+        }
+
+        private void DeleteAchievement(int achievementId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "DELETE FROM Achievements WHERE AchievementID = @AchievementID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@AchievementID", achievementId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                LoadAchievements();
+                ShowMessage("Achievement deleted successfully!", true);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error deleting achievement: " + ex.Message, false);
+            }
+        }
+
+        private void ClearAchievementForm()
+        {
+            txtAchievementTitle.Text = "";
+            txtAchievementDescription.Text = "";
+            txtAchievementImagePath.Text = "";
+        }
+        #endregion
+
+        #region Work Experience Management
+        private void LoadWorkExperience()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT ExperienceID, JobTitle, CompanyName, Duration FROM WorkExperience ORDER BY ExperienceID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            gvWorkExperience.DataSource = dt;
+                            gvWorkExperience.DataBind();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading work experience: " + ex.Message, false);
+            }
+        }
+
+        protected void btnAddWorkExp_Click(object sender, EventArgs e)
+        {
+            pnlWorkExpForm.Visible = true;
+            lblWorkExpFormTitle.Text = "Add New Work Experience";
+            hfWorkExpID.Value = "";
+            ClearWorkExpForm();
+        }
+
+        protected void btnSaveWorkExp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query;
+                    
+                    if (string.IsNullOrEmpty(hfWorkExpID.Value))
+                    {
+                        query = "INSERT INTO WorkExperience (JobTitle, CompanyName, Duration) VALUES (@JobTitle, @CompanyName, @Duration)";
+                    }
+                    else
+                    {
+                        query = "UPDATE WorkExperience SET JobTitle = @JobTitle, CompanyName = @CompanyName, Duration = @Duration WHERE ExperienceID = @ExperienceID";
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@JobTitle", txtJobTitle.Text.Trim());
+                        cmd.Parameters.AddWithValue("@CompanyName", txtCompanyName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Duration", txtDuration.Text.Trim());
+                        
+                        if (!string.IsNullOrEmpty(hfWorkExpID.Value))
+                        {
+                            cmd.Parameters.AddWithValue("@ExperienceID", hfWorkExpID.Value);
+                        }
+                        
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                
+                pnlWorkExpForm.Visible = false;
+                LoadWorkExperience();
+                ShowMessage("Work experience saved successfully!", true);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error saving work experience: " + ex.Message, false);
+            }
+        }
+
+        protected void btnCancelWorkExp_Click(object sender, EventArgs e)
+        {
+            pnlWorkExpForm.Visible = false;
+        }
+
+        protected void gvWorkExperience_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int experienceId = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "EditWorkExp")
+            {
+                EditWorkExperience(experienceId);
+            }
+            else if (e.CommandName == "DeleteWorkExp")
+            {
+                DeleteWorkExperience(experienceId);
+            }
+        }
+
+        private void EditWorkExperience(int experienceId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT JobTitle, CompanyName, Duration FROM WorkExperience WHERE ExperienceID = @ExperienceID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ExperienceID", experienceId);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                pnlWorkExpForm.Visible = true;
+                                lblWorkExpFormTitle.Text = "Edit Work Experience";
+                                hfWorkExpID.Value = experienceId.ToString();
+                                txtJobTitle.Text = reader["JobTitle"].ToString();
+                                txtCompanyName.Text = reader["CompanyName"].ToString();
+                                txtDuration.Text = reader["Duration"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error loading work experience data: " + ex.Message, false);
+            }
+        }
+
+        private void DeleteWorkExperience(int experienceId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "DELETE FROM WorkExperience WHERE ExperienceID = @ExperienceID";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ExperienceID", experienceId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                LoadWorkExperience();
+                ShowMessage("Work experience deleted successfully!", true);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error deleting work experience: " + ex.Message, false);
+            }
+        }
+
+        private void ClearWorkExpForm()
+        {
+            txtJobTitle.Text = "";
+            txtCompanyName.Text = "";
+            txtDuration.Text = "";
+        }
+        #endregion
+
+        #region Utility Methods
+        private void LoadAllData()
+        {
+            LoadSkills();
+            LoadProjects();
+            LoadAchievements();
+            LoadWorkExperience();
+        }
+
+        private void ShowMessage(string message, bool isSuccess)
+        {
+            lblMessage.Text = message;
+            messageContainer.Attributes["class"] = isSuccess ? "alert alert-success" : "alert alert-error";
+            pnlMessage.Visible = true;
+
+            // Auto-hide message after 5 seconds using JavaScript
+            string script = "setTimeout(function() { document.getElementById('" + pnlMessage.ClientID + "').style.display = 'none'; }, 5000);";
+            ScriptManager.RegisterStartupScript(this, GetType(), "hideMessage", script, true);
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            // Clear all sessions
+            Session.Clear();
+            Session.Abandon();
+            
+            // Clear authentication cookie
+            FormsAuthentication.SignOut();
+            
+            // Clear remember me cookie
+            ClearRememberMeCookie();
+            
+            // Redirect to login page
+            Response.Redirect("Login.aspx");
+        }
+
+        private void ClearRememberMeCookie()
+        {
+            try
+            {
+                HttpCookie rememberCookie = new HttpCookie("AdminRememberMe");
+                rememberCookie.Expires = DateTime.Now.AddDays(-1); // Expire the cookie
+                rememberCookie.Value = "";
+                rememberCookie.Path = FormsAuthentication.FormsCookiePath;
+                Response.Cookies.Add(rememberCookie);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error clearing remember me cookie: " + ex.Message);
+            }
+        }
+        #endregion
+    }
+}

@@ -1,0 +1,421 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Shormi Ghosh's personal portfolio showcasing her education,skills, projects, and contact information."
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons - Very reliable -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/dynamic-styles.css" />
+    <title>Portfolio - Shormi Ghosh</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- loading -->
+    <div class="loader">
+      <div class="txt">Loading...</div>
+      <div class="loadbar">
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <!-- main page -->
+    <a id="top"></a>
+    <header>
+      <nav>
+        <div class="nav-container">
+          <div class="left">Shormi Ghosh</div>
+          <ul class="nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact-section">Contact</a></li>
+          </ul>
+          <div style="display: flex; align-items: center">
+            <div class="theme-toggle" id="themeToggle">
+              <span class="material-symbols-outlined theme-togg-icon light">
+                light_mode
+              </span>
+              <span class="material-symbols-outlined theme-togg-icon dark">
+                dark_mode
+              </span>
+            </div>
+          </div>
+          <div class="menu-toggle" id="menuToggle">
+            <span class="material-symbols-outlined">menu</span>
+          </div>
+        </div>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact-section">Contact</a>
+      </div>
+    </header>
+    <main>
+      <!-- home section -->
+      <section class="profile" id="home">
+        <div class="profile-bg"></div>
+        <div class="profile-content">
+          <h2 class="greeting">Hello I'm</h2>
+          <h1 class="name">Shormi Ghosh</h1>
+          <h1 class="description">A <span class="typing-demo"></span></h1>
+          <span class="buttons"
+            ><a href="#contact-section" class="btn contact-me-btn"
+              >Contact Me</a
+            >
+            <a
+              href="assets/Shormi Ghosh CV.pdf"
+              class="btn down-cv-btn"
+              download="Shormi_Ghosh_CV.pdf"
+              >Download CV</a
+            ></span
+          >
+          <ul class="social-icons">
+            <li>
+              <a
+                href="https://www.linkedin.com/in/shormi-ghosh-225112255/"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://github.com/ShormiGhosh" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/shormi.ghosh.923"
+                target="_blank"
+              >
+                <i class="fab fa-facebook"></i
+              ></a>
+            </li>
+
+            <li>
+              <a href="https://www.instagram.com/shormi.__" target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <img
+          class="profile-img"
+          src="photos/profile.jpg"
+          alt="Profile Picture"
+        />
+        <spline-viewer
+          class="spline-viewer"
+          url="https://prod.spline.design/GSj1lTcc4TTth3-v/scene.splinecode"
+        ></spline-viewer>
+      </section>
+      <!-- about section -->
+       <section id="about">
+<div class="about-container">
+  <div class="row">
+    <div class="about-col1">
+      <img src="photos/profile-about.jpg" alt="profile image">
+    </div>
+    <div class="about-col2"><h1 class="subtitle">About Me</h1>
+    <p class="para">I am a Computer Science and Engineering undergraduate with a strong interest in problem solving and exploring innovative approaches to technology. Beyond academics, I have a passion for photography, which allows me to combine creativity with technical precision. I enjoy tackling challenges, learning new skills, and working on projects that create meaningful impact. My goal is to grow as a versatile professional by blending analytical thinking with creativity in both technology and art.</p>
+    <div class="tab-titles">
+      <p class="tablink active-link" onclick="toggleTab('education')">Education</p>
+      <p class="tablink" onclick="toggleTab('work')">Work Experiences</p>
+    </div>
+    <div class="tab-contents">
+      <div class="tabcontent active-content" id="education">
+        <ul>
+          <li><span>B.Sc. in Computer Science and Engineering </span><br>
+          Khulna University of Engineering & Technology | 2023 - Present</li>
+          <li><span>Higher Secondary Certificate (HSC)</span><br>
+          Govt. M.M. City College, Khulna | 2019 - 2021</li>
+          <li><span>Secondary School Certificate (SSC)</span><br>
+          Khulna Collegiate Girls' School, Khulna | 2017 - 2019</li>
+        </ul>
+      </div>
+      <div class="tabcontent" id="work">
+        <div class="work-experience-container">
+          <!-- This will be populated dynamically from database -->
+          <div class="experience-list" id="experienceList">
+            <!-- Dynamic content will be inserted here -->
+          </div>
+          
+          <div class="no-experience" id="noExperience">
+            <p>No work experience yet</p>
+            <span>Currently focusing on education and building skills</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+       </section>
+      <!-- skill section -->
+      <section id="skills">
+        <h1>Skills & Expertise</h1>
+        <div class="soft-technical">
+          <div class="programing-lang">
+            <h2>
+              <span class="material-symbols-outlined skill-icon"> data_object </span>
+              Programming Languages
+            </h2>
+            <ul>
+              <!-- Static skills - these will remain -->
+              <li>C</li>
+              <li>C++</li>
+              <li>C#</li>
+              <li>Java</li>
+              <li>Python</li>
+              <li>Dart</li>
+              <li>TypeScript</li>
+              <li>JavaScript</li>
+              <li>SQL</li>
+              <!-- Dynamic skills will be appended here -->
+            </ul>
+          </div>
+          <div class="frame-lib">
+            <h2>
+              <span class="material-symbols-outlined skill-icon"> flutter </span>
+              Frameworks & Libraries
+            </h2>
+            <ul>
+              <!-- Static skills -->
+              <li>Flutter</li>
+              <li>JavaFX</li>
+              <li>Flame</li>
+              <li>Tailwind CSS</li>
+              <!-- Dynamic skills will be appended here -->
+            </ul>
+          </div>
+          <div class="tool-technology">
+            <h2>
+              <span class="material-symbols-outlined skill-icon"> terminal </span> Tools &
+              Technologies
+            </h2>
+            <ul>
+              <!-- Static skills -->
+              <li>Git & GitHub</li>
+              <li>SQLite</li>
+              <li>MySQL</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>VS Code</li>
+              <li>Android Studio</li>
+              <li>Figma</li>
+              <li>Canva</li>
+              <!-- Dynamic skills will be appended here -->
+            </ul>
+          </div>
+          <div class="soft">
+            <h2>
+              <span class="material-symbols-outlined skill-icon"> psychology </span> Soft
+              Skills
+            </h2>
+            <ul>
+              <!-- Static skills -->
+              <li>Communication</li>
+              <li>Teamwork</li>
+              <li>Problem-solving</li>
+              <li>Adaptability</li>
+              <li>Time Management</li>
+              <!-- Dynamic skills will be appended here -->
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Project section -->
+       <section id="projects">
+         <div class="projects-container">
+           <h1>My Projects</h1>
+           <div class="project-list">
+            <!-- Static projects - these will remain -->
+            <div class="project-item">
+              <img src="photos/parabounce.JPG" alt="parabounce project">
+            <div class="layer">
+              <h3>ParaBounce</h3>
+              <p>A squid game theme based Projectile Motion with Air Resistance Simulator</p>
+            <a href="https://github.com/ShormiGhosh/ParaBounce--Projectile-Motion-Simulation" target="_blank"><i class="fab fa-github"></i
+                ></a>
+            </div>
+            </div>
+            <div class="project-item">
+             <img src="photos/pixaid.JPG" alt="pixaid project">
+            <div class="layer">
+              <h3>PixAid</h3>
+              <p>A desktop application for selling photographs for donation purposes.</p>
+            <a href="https://github.com/ShormiGhosh/PixAid__DesktopApplication" target="_blank"><i class="fab fa-github"></i
+                ></a>
+            </div>
+            </div>
+            <div class="project-item">
+              <img src="photos/protibimb.JPG" alt="protibimb project">
+            <div class="layer">
+              <h3>Python AI Assistant</h3>
+              <p>A virtual assistant built with Python</p>
+            <a href="https://github.com/ShormiGhosh/python_project_protibimba-My-AI-assistant-" target="_blank"><i class="fab fa-github"></i
+                ></a>
+            </div>
+           </div>
+           <!-- Dynamic projects will be appended here -->
+         </div>
+       </section>
+      <!-- Achievements Section -->
+      <section id="achievements">
+        <h1>Achievements</h1>
+        <div class="achievements-container">
+          <!-- Static achievements - these will remain -->
+          <div class="achievement-item">
+            <div class="achievement-image">
+              <img src="photos/achievment1.jpeg" alt="Hackathon Achievement">
+            </div>
+            <div class="achievement-content">
+              <h3 class="achievement-title">
+1st Runner-up in the Bridging Engineering & Computer Science Competition 2025</h3>
+              <p class="achievement-description">Our team Kuet-Kobe-Khulbe completed our project for the "Bridging Engineering & Computer Science" international hackathon, co-hosted by ILM AI and City St George's, University of London.
+We worked on: ParaBounce —A squid game theme based Projectile Motion with Air Resistance Simulator - Simulating real-world projectile motion by modelling drag forces and solving dynamic equations in real time.
+</p>
+            </div>
+          </div>
+          
+          <div class="achievement-item">
+            <div class="achievement-image">
+              <img src="photos/acievement2.jpeg" alt="Best All-Girls Team Achievement">
+            </div>
+            <div class="achievement-content">
+              <h3 class="achievement-title">
+Best All-Girls Team in Intra KUET Programming Contest 2023</h3>
+              <p class="achievement-description">This was my first onsite programming contest and our team secured the title of Best All-Girls Team. It was a great experience that boosted my confidence and skills in competitive programming.</p>
+            </div>
+          </div>
+          
+          <!-- Dynamic achievements will be appended here -->
+        </div>
+      </section>
+      <!-- contact me page -->
+      <section id="contact-section">
+        <h1>Get In Touch</h1>
+        <div class="contact-bg">
+          <div class="contact-info">
+            <p>
+              If you have any questions or inquiries, feel free to reach out!
+            </p>
+            <ul>
+              <li>
+                <span class="material-symbols-outlined">mail</span
+                >shormighosh111@gmail.com
+              </li>
+              <li>
+                <span class="material-symbols-outlined">call</span>+880
+                1919320102
+              </li>
+              <li>
+                <span class="material-symbols-outlined">distance</span>Khulna,
+                Bangladesh
+              </li>
+            </ul>
+            <ul class="social-icons">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/shormi-ghosh-225112255/"
+                  target="_blank"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://github.com/ShormiGhosh" target="_blank"
+                  ><i class="fab fa-github"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/shormi.ghosh.923"
+                  target="_blank"
+                >
+                  <i class="fab fa-facebook"></i
+                ></a>
+              </li>
+
+              <li>
+                <a href="https://www.instagram.com/shormi.__" target="_blank"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="contact-form">
+            <form action=https://formspree.io/f/xyzdlrld method="POST" id="contact-form">
+              <div class="form-row">
+                <span
+                  ><label for="name">Name:</label>
+                  <input type="text" id="name" name="name" required
+                /></span>
+                <span
+                  ><label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required
+                /></span>
+              </div>
+              <span
+                ><label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required
+              /></span>
+              <label for="message">Message:</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+              ></textarea>
+              <input type="hidden" name="_replyto" value="shormighosh111@gmail.com">
+              <input type="hidden" name="_subject" value="Portfolio Contact Form Submission">
+              <button type="submit" id="submit-btn">Send Message</button>
+              <div id="form-status" style="margin-top: 1rem; text-align: center;"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      &copy; <span id="year"></span> Shormi Ghosh | All rights reserved
+    </footer>
+    <a
+      href="#top"
+      class="back-to-top"
+      title="Back to Top"
+      style="margin-left: 20px"
+      ><span class="material-symbols-outlined"> expand_circle_up </span>
+    </a>
+    
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="js/portfolio-loader.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer@1.10.51/build/spline-viewer.js"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  </body>
+</html>

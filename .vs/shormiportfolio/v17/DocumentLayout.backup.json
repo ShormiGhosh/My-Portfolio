@@ -1,0 +1,473 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|d:\\web development\\shormiportfolio\\shormiportfolio\\shormiportfolio\\shormiportfolio\\frontend\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\frontend\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|d:\\web development\\shormiportfolio\\shormiportfolio\\shormiportfolio\\shormiportfolio\\admin\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\admin\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\database\\createdatabase.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\database\\createdatabase.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\database\\fix_admin_user.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\database\\fix_admin_user.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\database\\debug_login.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\database\\debug_login.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\admin\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\admin\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\database\\create_login_audit.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\database\\create_login_audit.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\admin\\adminstyles.css||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\admin\\adminstyles.css||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\admin\\sessioncookiemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\admin\\sessioncookiemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\admin\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\admin\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\admin\\dashboard.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\admin\\dashboard.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\database\\verify_setup.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\database\\verify_setup.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\default.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\default.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\admin\\login.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\admin\\login.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\admin\\dashboard.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\admin\\dashboard.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\global.asax||{4D30FDB3-AB3E-4810-B6F2-64627BCCA384}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\global.asax||{4D30FDB3-AB3E-4810-B6F2-64627BCCA384}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\cookies_session_guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\cookies_session_guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\api\\portfoliodata.ashx||{DAB1E6DB-4119-49A3-ACE3-0FE8F3E0669F}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\api\\portfoliodata.ashx||{DAB1E6DB-4119-49A3-ACE3-0FE8F3E0669F}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\frontend\\js\\portfolio-loader.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}|",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\frontend\\js\\portfolio-loader.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\frontend\\css\\dynamic-styles.css||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\frontend\\css\\dynamic-styles.css||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\api\\refreshnotifier.ashx||{DAB1E6DB-4119-49A3-ACE3-0FE8F3E0669F}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\api\\refreshnotifier.ashx||{DAB1E6DB-4119-49A3-ACE3-0FE8F3E0669F}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\admin\\tools.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84222FD0-2449-4F84-B4C6-4007D023AAAF}|shormiportfolio\\shormiportfolio.csproj|solutionrelative:shormiportfolio\\admin\\tools.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 193,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "COOKIES_SESSION_GUIDE.md",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\COOKIES_SESSION_GUIDE.md",
+              "RelativeDocumentMoniker": "shormiportfolio\\COOKIES_SESSION_GUIDE.md",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\COOKIES_SESSION_GUIDE.md",
+              "RelativeToolTip": "shormiportfolio\\COOKIES_SESSION_GUIDE.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPYAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-09-10T10:38:02.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SessionCookieManager.cs",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\SessionCookieManager.cs",
+              "RelativeDocumentMoniker": "shormiportfolio\\Admin\\SessionCookieManager.cs",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\SessionCookieManager.cs",
+              "RelativeToolTip": "shormiportfolio\\Admin\\SessionCookieManager.cs",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAAFsBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T10:35:36.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Web.config",
+              "RelativeDocumentMoniker": "shormiportfolio\\Web.config",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Web.config",
+              "RelativeToolTip": "shormiportfolio\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-10T08:05:15.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.aspx",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Login.aspx",
+              "RelativeDocumentMoniker": "shormiportfolio\\Admin\\Login.aspx",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Login.aspx",
+              "RelativeToolTip": "shormiportfolio\\Admin\\Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-10T08:07:07.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Login.aspx.cs",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Login.aspx.cs",
+              "RelativeDocumentMoniker": "shormiportfolio\\Admin\\Login.aspx.cs",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Login.aspx.cs",
+              "RelativeToolTip": "shormiportfolio\\Admin\\Login.aspx.cs",
+              "ViewState": "AgIAAFQBAAAAAAAAAAAAAMABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T08:07:20.106Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdminStyles.css",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\AdminStyles.css",
+              "RelativeDocumentMoniker": "shormiportfolio\\Admin\\AdminStyles.css",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\AdminStyles.css",
+              "RelativeToolTip": "shormiportfolio\\Admin\\AdminStyles.css",
+              "ViewState": "AgIAAIUCAAAAAAAAAADgvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-10T08:08:57.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Dashboard.aspx",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Dashboard.aspx",
+              "RelativeDocumentMoniker": "shormiportfolio\\Admin\\Dashboard.aspx",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Dashboard.aspx",
+              "RelativeToolTip": "shormiportfolio\\Admin\\Dashboard.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-10T08:08:14.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "create_login_audit.sql ",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\create_login_audit.sql",
+              "RelativeDocumentMoniker": "shormiportfolio\\Database\\create_login_audit.sql",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\create_login_audit.sql",
+              "RelativeToolTip": "shormiportfolio\\Database\\create_login_audit.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-10T10:34:48.044Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "createdatabase.sql ",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\createdatabase.sql",
+              "RelativeDocumentMoniker": "shormiportfolio\\Database\\createdatabase.sql",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\createdatabase.sql",
+              "RelativeToolTip": "shormiportfolio\\Database\\createdatabase.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-10T10:50:33.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "debug_login.sql ",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\debug_login.sql",
+              "RelativeDocumentMoniker": "shormiportfolio\\Database\\debug_login.sql",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\debug_login.sql",
+              "RelativeToolTip": "shormiportfolio\\Database\\debug_login.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-10T10:52:44.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "fix_admin_user.sql ",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\fix_admin_user.sql",
+              "RelativeDocumentMoniker": "shormiportfolio\\Database\\fix_admin_user.sql",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\fix_admin_user.sql",
+              "RelativeToolTip": "shormiportfolio\\Database\\fix_admin_user.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-10T10:52:57.391Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Dashboard.aspx.cs",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Dashboard.aspx.cs",
+              "RelativeDocumentMoniker": "shormiportfolio\\Admin\\Dashboard.aspx.cs",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Dashboard.aspx.cs",
+              "RelativeToolTip": "shormiportfolio\\Admin\\Dashboard.aspx.cs",
+              "ViewState": "AgIAAHUEAAAAAAAAAEBVwAABAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T08:10:11.084Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Default.aspx.cs",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Default.aspx.cs",
+              "RelativeDocumentMoniker": "shormiportfolio\\Default.aspx.cs",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Default.aspx.cs",
+              "RelativeToolTip": "shormiportfolio\\Default.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T08:06:44.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Default.aspx",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Default.aspx",
+              "RelativeDocumentMoniker": "shormiportfolio\\Default.aspx",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Default.aspx",
+              "RelativeToolTip": "shormiportfolio\\Default.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-10T08:06:12.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "verify_setup.sql ",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\verify_setup.sql",
+              "RelativeDocumentMoniker": "shormiportfolio\\Database\\verify_setup.sql",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Database\\verify_setup.sql",
+              "RelativeToolTip": "shormiportfolio\\Database\\verify_setup.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-10T08:16:45.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "README.md",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\README.md",
+              "RelativeDocumentMoniker": "shormiportfolio\\README.md",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\README.md",
+              "RelativeToolTip": "shormiportfolio\\README.md",
+              "ViewState": "AgIAAPkAAAAAAAAAAIBJwPsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-09-10T08:16:27.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Global.asax.cs",
+              "RelativeDocumentMoniker": "shormiportfolio\\Global.asax.cs",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Global.asax.cs",
+              "RelativeToolTip": "shormiportfolio\\Global.asax.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAABRwDYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T08:15:48.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Global.asax",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Global.asax",
+              "RelativeDocumentMoniker": "shormiportfolio\\Global.asax",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Global.asax",
+              "RelativeToolTip": "shormiportfolio\\Global.asax",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000179|",
+              "WhenOpened": "2025-09-10T08:15:34.928Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Dashboard.aspx.designer.cs",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Dashboard.aspx.designer.cs",
+              "RelativeDocumentMoniker": "shormiportfolio\\Admin\\Dashboard.aspx.designer.cs",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Dashboard.aspx.designer.cs",
+              "RelativeToolTip": "shormiportfolio\\Admin\\Dashboard.aspx.designer.cs",
+              "ViewState": "AgIAAGUCAAAAAAAAAEBVwGkCAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T08:12:25.881Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Login.aspx.designer.cs",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Login.aspx.designer.cs",
+              "RelativeDocumentMoniker": "shormiportfolio\\Admin\\Login.aspx.designer.cs",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Login.aspx.designer.cs",
+              "RelativeToolTip": "shormiportfolio\\Admin\\Login.aspx.designer.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAABRwE0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T08:11:37.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Default.aspx.designer.cs",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Default.aspx.designer.cs",
+              "RelativeDocumentMoniker": "shormiportfolio\\Default.aspx.designer.cs",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Default.aspx.designer.cs",
+              "RelativeToolTip": "shormiportfolio\\Default.aspx.designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T08:11:27.95Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 236,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.html",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\FrontEnd\\index.html",
+              "RelativeDocumentMoniker": "shormiportfolio\\FrontEnd\\index.html",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\FrontEnd\\index.html*",
+              "RelativeToolTip": "shormiportfolio\\FrontEnd\\index.html*",
+              "ViewState": "AgIAANsAAAAAAAAAAADwv9kAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-09-10T13:47:02.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "portfolio-loader.js",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\FrontEnd\\js\\portfolio-loader.js",
+              "RelativeDocumentMoniker": "shormiportfolio\\FrontEnd\\js\\portfolio-loader.js",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\FrontEnd\\js\\portfolio-loader.js",
+              "RelativeToolTip": "shormiportfolio\\FrontEnd\\js\\portfolio-loader.js",
+              "ViewState": "AgIAAF4BAAAAAAAAAIBJwGABAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-10T13:45:52.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\packages.config",
+              "RelativeDocumentMoniker": "shormiportfolio\\packages.config",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\packages.config",
+              "RelativeToolTip": "shormiportfolio\\packages.config",
+              "ViewState": "AgIAAAMAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-10T13:44:26.632Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "PortfolioData.ashx",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\api\\PortfolioData.ashx",
+              "RelativeDocumentMoniker": "shormiportfolio\\api\\PortfolioData.ashx",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\api\\PortfolioData.ashx",
+              "RelativeToolTip": "shormiportfolio\\api\\PortfolioData.ashx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000192|",
+              "WhenOpened": "2025-09-10T13:43:52.555Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Tools.html",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Tools.html",
+              "RelativeDocumentMoniker": "shormiportfolio\\Admin\\Tools.html",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\Admin\\Tools.html",
+              "RelativeToolTip": "shormiportfolio\\Admin\\Tools.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-09-10T13:49:49.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "RefreshNotifier.ashx",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\api\\RefreshNotifier.ashx",
+              "RelativeDocumentMoniker": "shormiportfolio\\api\\RefreshNotifier.ashx",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\api\\RefreshNotifier.ashx",
+              "RelativeToolTip": "shormiportfolio\\api\\RefreshNotifier.ashx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000192|",
+              "WhenOpened": "2025-09-10T13:48:26.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "dynamic-styles.css",
+              "DocumentMoniker": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\FrontEnd\\css\\dynamic-styles.css",
+              "RelativeDocumentMoniker": "shormiportfolio\\FrontEnd\\css\\dynamic-styles.css",
+              "ToolTip": "D:\\Web Development\\shormiPortfolio\\shormiPortfolio\\shormiportfolio\\shormiportfolio\\FrontEnd\\css\\dynamic-styles.css",
+              "RelativeToolTip": "shormiportfolio\\FrontEnd\\css\\dynamic-styles.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-10T13:47:45.628Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

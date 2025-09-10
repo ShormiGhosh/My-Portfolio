@@ -1,0 +1,41 @@
+﻿using System;
+using System.Web;
+
+namespace shormiportfolio
+{
+    public class Global : HttpApplication
+    {
+        protected void Application_Start(object sender, EventArgs e)
+        {
+            // Application startup logic
+        }
+
+        protected void Application_End(object sender, EventArgs e)
+        {
+            // Application shutdown logic
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            // Global error handling
+            Exception lastError = Server.GetLastError();
+            
+            // Log the error (in production, use proper logging)
+            // For now, clear the error
+            Server.ClearError();
+            
+            // Redirect to a custom error page if needed
+            // Response.Redirect("~/Error.aspx");
+        }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            // Session start logic
+        }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+            // Session end logic
+        }
+    }
+}
